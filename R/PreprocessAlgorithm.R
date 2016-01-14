@@ -46,7 +46,15 @@ PreprocessAlgorithm <- R6::R6Class("PreprocessAlgorithm",
       #Use tryCatch() to remove experiment folders even it there are errors
       tryCatch({
         #Experiment folder
-        private$mainPath <- paste0(gsub("//", "/", system.file("", "", package="RKEEL")), "experiment_", gsub(" ", "_", gsub(":", "-", toString(Sys.time()))), sample(1:10000, 1))
+        #expPath <- gsub("//", "/", system.file("exp", "", package="RKEEL"))
+
+        expPath <- gsub("\\\\", "/", tempdir())
+
+        if(substr(expPath, nchar(expPath), nchar(expPath)) != "/"){
+          expPath <- paste0(expPath, "/")
+        }
+
+        private$mainPath <- paste0(expPath, "experiment_", gsub(" ", "_", gsub(":", "-", toString(Sys.time()))), sample(1:10000, 1))
         private$generateExperimentDir(private$mainPath)
 
         #Copy dataset folder

@@ -2,7 +2,7 @@ Package: RKEEL
 Type: Package
 Title: RKEEL: Using Keel in R code
 Version: 1.0
-Depends: R (>= 3.0)
+Depends: R (≥ 3.0)
 Date: 2015-11-06
 Authors@R: c(
 	person("Jose", "Moyano", email = "i02momuj@uco.es", role = c("aut", "cre")),
