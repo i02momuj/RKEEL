@@ -1,7 +1,7 @@
 # RKEEL
-RKEEL: Using Keel in R code
+###RKEEL: Using Keel in R code
 
-#INSTALL
+##INSTALL
 To install the package, first have to download the appropriate binary file from *bin* folder.
 
 Then, in R, only have to type:
