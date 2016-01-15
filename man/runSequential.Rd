@@ -28,7 +28,8 @@ learner_Logistic_C <- RKEEL::Logistic_C(iris_train, iris_test)
 learner_LDA_C <- RKEEL::LDA_C(iris_train, iris_test)
 
 #Create list
-algorithms <- list(learner_C45_C, learner_FRNN_C, learner_FuzzyKNN_C, learner_KNN_C, learner_Logistic_C, learner_LDA_C)
+algorithms <- list(learner_C45_C, learner_FRNN_C, learner_FuzzyKNN_C,
+   learner_KNN_C, learner_Logistic_C, learner_LDA_C)
 
 #Run algorithms
 par <- RKEEL::runSequential(algorithms)

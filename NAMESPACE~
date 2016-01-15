@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+")
+import(R6)
+import(XML)
+import(doParallel)
+import(foreach)

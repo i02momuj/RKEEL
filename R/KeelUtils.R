@@ -330,7 +330,7 @@ writeDatFromDataframe = function(data, fileName){
       attribute <- paste0(attribute, " integer [", min(na.omit(as.numeric(as.character(data[,i])))), ", ", max(na.omit(as.numeric(as.character(data[,i])))), "]")
       attributesType <- c(attributesType, "integer")
     }
-    #¿Categorical?
+    #Categorical
     else if(!is.null(levels(data[,i]))){
       #add "{" and first value
       attribute <- paste0(attribute, " {", levels(data[,i])[1])
@@ -529,7 +529,7 @@ getAttributeLinesFromDataframes = function(trainData, testData){
       attribute <- paste0(attribute, " integer [", min(na.omit(as.numeric(as.character(data[,i])))), ", ", max(na.omit(as.numeric(as.character(data[,i])))), "]")
       attributesType <- c(attributesType, "integer")
     }
-    #¿Categorical?
+    #Categorical
     else if(!is.null(levels(data[,i]))){
       #add "{" and first value
       attribute <- paste0(attribute, " {", levels(data[,i])[1])
