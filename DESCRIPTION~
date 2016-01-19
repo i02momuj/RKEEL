@@ -1,7 +1,7 @@
 Package: RKEEL
 Type: Package
 Title: Using Keel in R Code
-Version: 1.0
+Version: 1.0.1
 Depends: R (>= 3.0)
 Date: 2016-01-14
 Authors@R: c(
@@ -21,4 +21,6 @@ Imports:
     R6,
     XML,
     doParallel,
-    foreach
+    foreach,
+    RKEELjars,
+    RKEELdata

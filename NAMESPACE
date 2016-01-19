@@ -1,6 +1,0 @@
-exportPattern("^[[:alpha:]]+")
-import(R6)
-import(XML)
-import(doParallel)
-import(foreach)
-importFrom("stats", "complete.cases", "na.omit")
