@@ -15,7 +15,7 @@ isMultiClass(data)
 Returns TRUE if the dataset is multi-class and FALSE if it is not.
 }
 \examples{
-iris <- loadKeelDataset("iris")
+iris <- RKEEL::loadKeelDataset("iris")
 isMultiClass(iris)
 }
 \keyword{utils}

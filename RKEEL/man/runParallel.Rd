@@ -17,8 +17,8 @@ Returns a list with the executed algorithms
 }
 \examples{
 #Load datasets
-iris_train <- loadKeelDataset("iris_train")
-iris_test <- loadKeelDataset("iris_test")
+iris_train <- RKEEL::loadKeelDataset("iris_train")
+iris_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithms
 learner_C45_C <- RKEEL::C45_C(iris_train, iris_test)

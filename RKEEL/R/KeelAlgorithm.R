@@ -24,7 +24,7 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
 
       #Test paths
       if(! file.exists(paste0(private$jarPath, "RunKeel.jar"))) {
-        #cat(paste0("jarPath: ", private$jarPath), sep="\n")
+        cat(paste0("jarPath: ", private$jarPath), sep="\n")
         stop("RunKeel.jar doesn't exist under the defined path. Installation error.")
       }
     },
@@ -47,15 +47,12 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
     #Private properties
 
     #RunKeel.jar path
-    #jarPath = system.file("exe", "", package="RKEELjars"),
     jarPath = RKEELjars::getJarPath(),
 
     #exes path
-    #exePath = system.file("exe", "", package="RKEELjars"),
     exePath = RKEELjars::getExePath(),
 
     #dataset path
-    #dataPath = system.file("datasets", "", package="RKEELdata"),
     dataPath = RKEELdata::getDataPath(),
 
 

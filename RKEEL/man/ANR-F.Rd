@@ -4,7 +4,7 @@
 \alias{R6_ANR_F}
 \title{ANR_F KEEL Preprocess Algorithm}
 \description{
-ANR_F Preprocess Algorithm from KEEL. 
+ANR_F Preprocess Algorithm from KEEL.
 }
 \usage{
 ANR_F(train, test, seed)
@@ -18,17 +18,17 @@ ANR_F(train, test, seed)
 A data.frame with the preprocessed data for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("car_train")
-data_test <- loadKeelDataset("car_test")
+data_train <- RKEEL::loadKeelDataset("car_train")
+data_test <- RKEEL::loadKeelDataset("car_test")
 
 #Create algorithm
 algorithm <- RKEEL::ANR_F(data_train, data_test)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$preprocessed_test
+#algorithm$preprocessed_test
 }
 \keyword{preprocess}
 

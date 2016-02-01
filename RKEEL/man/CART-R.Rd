@@ -18,8 +18,8 @@ CART_R(train, test, maxDepth)
 A data.frame with the actual and predicted values for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("autoMPG6_train")
-data_test <- loadKeelDataset("autoMPG6_test")
+data_train <- RKEEL::loadKeelDataset("autoMPG6_train")
+data_test <- RKEEL::loadKeelDataset("autoMPG6_test")
 
 #Create algorithm
 algorithm <- RKEEL::CART_R(data_train, data_test)

@@ -18,8 +18,8 @@ PSRCG_TSS(train, test, distance)
 A data.frame with the preprocessed data for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("car_train")
-data_test <- loadKeelDataset("car_test")
+data_train <- RKEEL::loadKeelDataset("car_train")
+data_test <- RKEEL::loadKeelDataset("car_test")
 
 #Create algorithm
 algorithm <- RKEEL::PSRCG_TSS(data_train, data_test)

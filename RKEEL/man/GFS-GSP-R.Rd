@@ -4,7 +4,7 @@
 \alias{R6_GFS_GSP_R}
 \title{GFS_GSP_R KEEL Regression Algorithm}
 \description{
-GFS_GSP_R Regression Algorithm from KEEL. 
+GFS_GSP_R Regression Algorithm from KEEL.
 }
 \usage{
 GFS_GSP_R(train, test, numLabels, numRules, deltafitsap,
@@ -36,11 +36,12 @@ GFS_GSP_R(train, test, numLabels, numRules, deltafitsap,
 A data.frame with the actual and predicted values for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("autoMPG6_train")
-data_test <- loadKeelDataset("autoMPG6_test")
+data_train <- RKEEL::loadKeelDataset("autoMPG6_train")
+data_test <- RKEEL::loadKeelDataset("autoMPG6_test")
 
 #Create algorithm
-algorithm <- RKEEL::GFS_GSP_R(data_train, data_test)
+#algorithm <- RKEEL::GFS_GSP_R(data_train, data_test)
+algorithm <- RKEEL::GFS_GSP_R(data_train, data_test, numRules = 2, numItera = 10, maxtreeheight = 2)
 
 #Run algorithm
 algorithm$run()

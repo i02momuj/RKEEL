@@ -4,7 +4,7 @@
 \alias{R6_GANN_C}
 \title{GANN_C KEEL Classification Algorithm}
 \description{
-GANN_C Classification Algorithm from KEEL. 
+GANN_C Classification Algorithm from KEEL.
 }
 \usage{
 GANN_C(train, test, hidden_layers, hidden_nodes, transfer, eta,
@@ -43,17 +43,17 @@ GANN_C(train, test, hidden_layers, hidden_nodes, transfer, eta,
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("iris_train")
-data_test <- loadKeelDataset("iris_test")
+data_train <- RKEEL::loadKeelDataset("iris_train")
+data_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithm
 algorithm <- RKEEL::GANN_C(data_train, data_test)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$testPredictions
+#algorithm$testPredictions
 }
 \keyword{classification}
 

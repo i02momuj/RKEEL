@@ -4,7 +4,7 @@
 \alias{R6_SSGA_Integer_knn_FS}
 \title{SSGA_Integer_knn_FS KEEL Preprocess Algorithm}
 \description{
-SSGA_Integer_knn_FS Preprocess Algorithm from KEEL. 
+SSGA_Integer_knn_FS Preprocess Algorithm from KEEL.
 }
 \usage{
 SSGA_Integer_knn_FS(train, test, paramKNN, nEval, pop_size,
@@ -23,11 +23,12 @@ SSGA_Integer_knn_FS(train, test, paramKNN, nEval, pop_size,
 A data.frame with the preprocessed data for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("car_train")
-data_test <- loadKeelDataset("car_test")
+data_train <- RKEEL::loadKeelDataset("car_train")
+data_test <- RKEEL::loadKeelDataset("car_test")
 
 #Create algorithm
-algorithm <- RKEEL::SSGA_Integer_knn_FS(data_train, data_test)
+#algorithm <- RKEEL::SSGA_Integer_knn_FS(data_train, data_test)
+algorithm <- RKEEL::SSGA_Integer_knn_FS(data_train, data_test, nEval = 10, pop_size = 10)
 
 #Run algorithm
 algorithm$run()

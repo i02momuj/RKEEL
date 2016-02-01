@@ -15,7 +15,7 @@ hasMissingValues(data)
 Returns TRUE if the dataset has missing values and FALSE if it has not.
 }
 \examples{
-iris <- loadKeelDataset("iris")
+iris <- RKEEL::loadKeelDataset("iris")
 hasMissingValues(iris)
 }
 \keyword{utils}

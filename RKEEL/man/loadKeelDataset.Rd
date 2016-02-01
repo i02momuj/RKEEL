@@ -4,7 +4,7 @@
 \title{Load KEEL Dataset}
 \description{
 Loads a dataset of the KEEL datasets repository.
-The included datasets names are available at the \code{getKeelDatasetList} method.
+The included datasets names are available at the \code{getKeelDatasetList} method of RKEELdata.
 }
 \usage{
 loadKeelDataset(dataName)
@@ -16,7 +16,7 @@ loadKeelDataset(dataName)
 Returns a data.frame with the KEEL dataset.
 }
 \examples{
-loadKeelDataset("iris")
+RKEEL::loadKeelDataset("iris")
 }
 \keyword{utils}
 

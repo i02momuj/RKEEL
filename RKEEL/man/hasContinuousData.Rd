@@ -15,7 +15,7 @@ hasContinuousData(data)
 Returns TRUE if the dataset has continuous data and FALSE if it has not.
 }
 \examples{
-iris <- loadKeelDataset("iris")
+iris <- RKEEL::loadKeelDataset("iris")
 hasContinuousData(iris)
 }
 \keyword{utils}

@@ -16,8 +16,8 @@ getAttributeLinesFromDataframes(trainData, testData)
 Returns a list with the attribute names and types
 }
 \examples{
-iris_train <- loadKeelDataset("iris_train")
-iris_test <- loadKeelDataset("iris_test")
+iris_train <- RKEEL::loadKeelDataset("iris_train")
+iris_test <- RKEEL::loadKeelDataset("iris_test")
 
 attributeLines <- getAttributeLinesFromDataframes(iris_train, iris_test)
 }

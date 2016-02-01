@@ -4,7 +4,7 @@
 \alias{R6_FRSBM_R}
 \title{FRSBM_R KEEL Regression Algorithm}
 \description{
-FRSBM_R Regression Algorithm from KEEL. 
+FRSBM_R Regression Algorithm from KEEL.
 }
 \usage{
 FRSBM_R(train, test, numrules, sigma, seed)
@@ -20,17 +20,17 @@ FRSBM_R(train, test, numrules, sigma, seed)
 A data.frame with the actual and predicted values for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("autoMPG6_train")
-data_test <- loadKeelDataset("autoMPG6_test")
+data_train <- RKEEL::loadKeelDataset("autoMPG6_train")
+data_test <- RKEEL::loadKeelDataset("autoMPG6_test")
 
 #Create algorithm
 algorithm <- RKEEL::FRSBM_R(data_train, data_test)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$testPredictions
+#algorithm$testPredictions
 }
 \keyword{regression}
 

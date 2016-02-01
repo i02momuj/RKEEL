@@ -19,8 +19,8 @@ VWFuzzyKNN_C(train, test, k, init_k)
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("iris_train")
-data_test <- loadKeelDataset("iris_test")
+data_train <- RKEEL::loadKeelDataset("iris_train")
+data_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithm
 algorithm <- RKEEL::VWFuzzyKNN_C(data_train, data_test)

@@ -4,7 +4,7 @@
 \alias{R6_Falco_GP_C}
 \title{Falco_GP_C KEEL Classification Algorithm}
 \description{
-Falco_GP_C Classification Algorithm from KEEL. 
+Falco_GP_C Classification Algorithm from KEEL.
 }
 \usage{
 Falco_GP_C(train, test, population_size, max_generations,
@@ -26,11 +26,12 @@ Falco_GP_C(train, test, population_size, max_generations,
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("iris_train")
-data_test <- loadKeelDataset("iris_test")
+data_train <- RKEEL::loadKeelDataset("iris_train")
+data_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithm
-algorithm <- RKEEL::Falco_GP_C(data_train, data_test)
+#algorithm <- RKEEL::Falco_GP_C(data_train, data_test)
+algorithm <- RKEEL::Falco_GP_C(data_train, data_test, population_size = 5, max_generations = 10)
 
 #Run algorithm
 algorithm$run()

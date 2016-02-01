@@ -4,7 +4,7 @@
 \alias{R6_SaturationFilter_F}
 \title{SaturationFilter_F KEEL Preprocess Algorithm}
 \description{
-SaturationFilter_F Preprocess Algorithm from KEEL. 
+SaturationFilter_F Preprocess Algorithm from KEEL.
 }
 \usage{
 SaturationFilter_F(train, test, seed)
@@ -18,17 +18,17 @@ SaturationFilter_F(train, test, seed)
 A data.frame with the preprocessed data for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("car_train")
-data_test <- loadKeelDataset("car_test")
+data_train <- RKEEL::loadKeelDataset("car_train")
+data_test <- RKEEL::loadKeelDataset("car_test")
 
 #Create algorithm
 algorithm <- RKEEL::SaturationFilter_F(data_train, data_test)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$preprocessed_test
+#algorithm$preprocessed_test
 }
 \keyword{preprocess}
 

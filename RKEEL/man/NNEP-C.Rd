@@ -4,7 +4,7 @@
 \alias{R6_NNEP_C}
 \title{NNEP_C KEEL Classification Algorithm}
 \description{
-NNEP_C Classification Algorithm from KEEL. 
+NNEP_C Classification Algorithm from KEEL.
 }
 \usage{
 NNEP_C(train, test, hidden_nodes, transfer, generations, seed)
@@ -21,11 +21,12 @@ NNEP_C(train, test, hidden_nodes, transfer, generations, seed)
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("iris_train")
-data_test <- loadKeelDataset("iris_test")
+data_train <- RKEEL::loadKeelDataset("iris_train")
+data_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithm
-algorithm <- RKEEL::NNEP_C(data_train, data_test)
+#algorithm <- RKEEL::NNEP_C(data_train, data_test)
+algorithm <- RKEEL::NNEP_C(data_train, data_test, generations = 5)
 
 #Run algorithm
 algorithm$run()

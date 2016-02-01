@@ -4,7 +4,7 @@
 \alias{R6_PRISM_C}
 \title{PRISM_C KEEL Classification Algorithm}
 \description{
-PRISM_C Classification Algorithm from KEEL. 
+PRISM_C Classification Algorithm from KEEL.
 }
 \usage{
 PRISM_C(train, test, seed)
@@ -18,17 +18,17 @@ PRISM_C(train, test, seed)
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- loadKeelDataset("car_train")
-data_test <- loadKeelDataset("car_test")
+data_train <- RKEEL::loadKeelDataset("car_train")
+data_test <- RKEEL::loadKeelDataset("car_test")
 
 #Create algorithm
 algorithm <- RKEEL::PRISM_C(data_train, data_test)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$testPredictions
+#algorithm$testPredictions
 }
 \keyword{classification}
 

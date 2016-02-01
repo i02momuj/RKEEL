@@ -91,7 +91,7 @@ read.keel <- function(file){
 
   while(!grepl("@data", tolower(text[i]))){
     if(grepl("@outputs", tolower(text[i]))){
-      outputAttribute <- trimws(strsplit(text[i], " ")[[1]][2])
+      outputAttribute <- gdata::trim(strsplit(text[i], " ")[[1]][2])
 
       for(j in 1:length(attributeNames)){
         if(grepl(outputAttribute, attributeNames[j])){
@@ -129,13 +129,13 @@ read.keel <- function(file){
           dataLine <- c(dataLine, "NA")
         }
         else if(grepl("integer", attributeTypes[j])){
-          dataLine <- c(dataLine, strtoi(trimws(dataWords[j])))
+          dataLine <- c(dataLine, strtoi(gdata::trim(dataWords[j])))
         }
         else if(grepl("real", attributeTypes[j])){
-          dataLine <- c(dataLine, as.double(trimws(dataWords[j])))
+          dataLine <- c(dataLine, as.double(gdata::trim(dataWords[j])))
         }
         else if(grepl("categorical", attributeTypes[j])){
-          dataLine <- c(dataLine, trimws(dataWords[j]))
+          dataLine <- c(dataLine, gdata::trim(dataWords[j]))
         }
         else{
           stop("Type not found")
