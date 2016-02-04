@@ -23,5 +23,5 @@ Imports:
     doParallel,
     foreach,
 	 gdata,
-    RKEELjars (>= 1.0.11),
+    RKEELjars (>= 1.0.10),
     RKEELdata (>= 1.0.2)

@@ -31,7 +31,8 @@ RegressionAlgorithm <- R6::R6Class("RegressionAlgorithm",
       private$testDataset <- test
 
       #Test jar file
-      if(! file.exists(paste0(private$exePath, private$jarName))){
+      #if(! file.exists(paste0(private$exePath, private$jarName))){
+      if(! file.exists(system.file("exe", private$jarName, package = "RKEELjars"))){
         stop(paste0(private$jarName, " doesn't exist under the defined path. Installation error."))
       }
 
@@ -65,7 +66,7 @@ RegressionAlgorithm <- R6::R6Class("RegressionAlgorithm",
         #file.copy(paste0(private$dataPath, private$testFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
 
         #Copy algorithm exe
-        file.copy(paste0(private$exePath, private$jarName), paste0(private$mainPath, "/exe/", private$jarName))
+        file.copy(system.file("exe", private$jarName, package = "RKEELjars"), paste0(private$mainPath, "/exe/", private$jarName))
 
         #Create results dir
         dir.create(paste0(private$mainPath, "/results/", private$algorithmName, ".", private$dataName))
@@ -228,7 +229,7 @@ RegressionAlgorithm <- R6::R6Class("RegressionAlgorithm",
         i <- i-1
       }
       #Obtain class names
-      classes <- trimws(strsplit(strsplit(strsplit(text[i], "{", fixed = TRUE)[[1]][2], "}", fixed=TRUE)[[1]][1], ",", fixed=TRUE)[[1]])
+      classes <- gdata::trim(strsplit(strsplit(strsplit(text[i], "{", fixed = TRUE)[[1]][2], "}", fixed=TRUE)[[1]][1], ",", fixed=TRUE)[[1]])
 
       while(text[i] != "@data"){
         i <- i+1

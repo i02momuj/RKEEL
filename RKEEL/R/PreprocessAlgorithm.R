@@ -34,7 +34,8 @@ PreprocessAlgorithm <- R6::R6Class("PreprocessAlgorithm",
       #super$initialize()
 
       #Test jar file
-      if(! file.exists(paste0(private$exePath, private$jarName))){
+      #if(! file.exists(paste0(private$exePath, private$jarName))){
+      if(! file.exists(system.file("exe", private$jarName, package = "RKEELjars"))){
         stop(paste0(private$jarName, " doesn't exist under the defined path. Installation error."))
       }
 
@@ -70,7 +71,7 @@ PreprocessAlgorithm <- R6::R6Class("PreprocessAlgorithm",
         }
 
         #Copy algorithm exe
-        file.copy(paste0(private$exePath, private$jarName), paste0(private$mainPath, "/exe/", private$jarName))
+        file.copy(system.file("exe", private$jarName, package = "RKEELjars"), paste0(private$mainPath, "/exe/", private$jarName))
 
         #Create results dir
         #dir.create(paste0(private$mainPath, "/results/", private$algorithmName, ".", private$dataName))

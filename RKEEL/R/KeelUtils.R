@@ -201,13 +201,16 @@ loadKeelDataset <- function(dataName){
 
   #At the moment, only few datasets from keel repository are attached to RKEEL
   if(dataName %in% dataList) {
-    dataPath <- KeelAlgorithm$private_fields$dataPath
+    dataPath <- RKEELdata::getDataPath()
 
     if(substr(dataPath, nchar(dataPath), nchar(dataPath)) != "/"){
       dataPath <- paste0(dataPath, "/")
     }
 
+    cat(dataPath)
+
     df <- read.keel(paste0(dataPath, dataName, ".dat"))
+
     return(df)
   }
   else {
