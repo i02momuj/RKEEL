@@ -20,3 +20,9 @@ Then, in R, only have to type:
 > install.packages(RKEEL_x.tar.gz, repos = NULL)
 > library("RKEEL")
 ```
+
+
+##CITATION
+In order to cite this work, use the following reference or the *citation.bib* file to use in latex.
+
+Moyano, J.M., & Sanchez, L. (2016). RKEEL: Using KEEL in R code. In *Fuzzy Systems (FUZZ-IEEE), 2016 IEEE International Conference on* (pp. 257-264). IEEE. doi:10.1109/fuzz-ieee.2016.7737695
