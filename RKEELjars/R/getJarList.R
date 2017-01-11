@@ -4,6 +4,7 @@ getJarList <- function(){
   jarList <- list(
     #Main jar
     "RunKeel.jar",
+    
     #Classification
     "Ensembles-I.jar", #AdaBoost.NC-C
     "ART.jar",
@@ -118,7 +119,27 @@ getJarList <- function(){
     "FS-SSGA-Integer-knn.jar",
     "Disc-UniformFrequency.jar",
     "Disc-UniformWidth.jar",
-    "Trns-ZScore.jar"
+    "Trns-ZScore.jar",
+	
+	#Association rules
+	"Alatasetal.jar",
+	"Alcalaetal.jar",
+	"Apriori.jar",
+	"EARMGA.jar",
+	"Eclat.jar",
+	"FPgrowth.jar",
+	"FuzzyApriori.jar",
+	"GAR.jar",
+	"GENAR.jar",
+	"GeneticFuzzyApriori.jar",
+	"GeneticFuzzyAprioriDC.jar",
+	"KeelLateXTables.jar",
+	"KeelToPMML.jar",
+	"MODENAR.jar",
+	"MOEA_Ghosh.jar",
+	"MOPNAR.jar",
+	"NICGAR.jar",
+	"QAR_CIP_NSGAII.jar"
 
   )
 

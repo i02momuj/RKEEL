@@ -24,11 +24,11 @@
   if(length(downloadList) > 0){
 
     downloadedFile <- file.path(system.file("exe", package="RKEELjars"), "RKEELjars.zip")
-
-    packageStartupMessage("Download RKEEL jars")
+    
+    #packageStartupMessage("Download RKEEL jars")
 
     #Try to download from dropbox
-    downloader::download(url = "https://www.dropbox.com/s/9g39xyvlpfapowj/RKEELjars.zip?dl=1", destfile = downloadedFile, mode = "wb")
+    downloader::download(url = "https://www.dropbox.com/s/r3boeaflbmzljam/RKEELjars.zip?dl=1", destfile = downloadedFile, mode = "wb")
 
     #If download failed, download from other mirror
     if(file.info(downloadedFile)$size < 1000000){
@@ -42,13 +42,13 @@
         warning("Jar files could not be downloaded.")
       }
       else{
-        unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"), files = downloadList)
+        unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"))
         unlink(downloadedFile)
       }
     }
     else{
-      unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"), files = downloadList)
-      unlink(downloadedFile)
+      unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"))
+      #unlink(downloadedFile)
     }
   }
 
