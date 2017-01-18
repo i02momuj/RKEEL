@@ -12,6 +12,9 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
 
     #Initialize
     initialize = function(){
+      rJava::.jinit()
+      javaPath <- paste0(rJava::.jcall('java/lang/System', 'S', 'getProperty', 'java.home'), "\\bin\\")
+
       jarPath <- RKEELjars::getJarPath()
 
       if(substr(private$jarPath, nchar(private$jarPath), nchar(private$jarPath)) != "/"){
@@ -64,6 +67,8 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
     #dataset path
     dataPath = RKEELdata::getDataPath(),
 
+    #java bin path
+    javaPath = "",
 
     #Private Functions
 

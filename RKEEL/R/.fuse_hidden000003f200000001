@@ -1,0 +1,706 @@
+
+ABB_IEP_FS <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_ABB_IEP_FS$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+AdaBoostNC_C <- function(train, test, pruned=TRUE, confidence=0.25, instancesPerLeaf=2, numClassifiers=10, algorithm="ADABOOST.NC", trainMethod="NORESAMPLING", lambda=2, seed=-1){
+  alg <- RKEEL::R6_AdaBoostNC_C$new()
+  alg$setParameters(train, test, pruned, confidence, instancesPerLeaf, numClassifiers, algorithm, trainMethod=, lambda, seed)
+  return (alg)
+}
+
+AllKNN_TSS <- function(train, test, k=3, distance="Euclidean"){
+  alg <- RKEEL::R6_AllKNN_TSS$new()
+  alg$setParameters(train, test, k, distance)
+  return (alg)
+}
+
+AllPosible_MV <- function(train, test){
+  alg <- RKEEL::R6_AllPosible_MV$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+ANR_F <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_ANR_F$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+ART_C <- function(train, test){
+  alg <- RKEEL::R6_ART_C$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+Bayesian_D <- function(train, test){
+  alg <- RKEEL::R6_Bayesian_D$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+BNGE_C <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_BNGE_C$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+Bojarczuk_GP_C <- function(train, test, population_size=200, max_generations=200, max_deriv_size=20, rec_prob=0.8, copy_prob=0.01, seed=-1){
+  alg <- RKEEL::R6_Bojarczuk_GP_C$new()
+  alg$setParameters(train, test, population_size, max_generations, max_deriv_size, rec_prob, copy_prob, seed)
+  return (alg)
+}
+
+BSE_C <- function(train, test, k=1, distance="Euclidean"){
+  alg <- RKEEL::R6_BSE_C$new()
+  alg$setParameters(train, test, k, distance)
+  return (alg)
+}
+
+C45Binarization_C <- function(train, test, pruned=TRUE, confidence=0.25, instancesPerLeaf=2, binarization="OVO", scoreFunction="WEIGHTED", bts=0.05){
+  alg <- RKEEL::R6_C45Binarization_C$new()
+  alg$setParameters(train, test, pruned, confidence, instancesPerLeaf, binarization, scoreFunction, bts)
+  return (alg)
+}
+
+C45_C <- function(train, test, pruned=TRUE, confidence=0.25, instancesPerLeaf=2){
+  alg <- RKEEL::R6_C45_C$new()
+  alg$setParameters(train, test, pruned, confidence, instancesPerLeaf)
+  return (alg)
+}
+
+C45Rules_C <- function(train, test, confidence=0.25, itemsetsPerLeaf=2, threshold=10, seed=-1){
+  alg <- RKEEL::R6_C45Rules_C$new()
+  alg$setParameters(train, test, confidence, itemsetsPerLeaf, threshold, seed)
+  return (alg)
+}
+
+CamNN_C <- function(train, test, k=1){
+  alg <- RKEEL::R6_CamNN_C$new()
+  alg$setParameters(train, test, k)
+  return (alg)
+}
+
+CART_C <- function(train, test, maxDepth=90){
+  alg <- RKEEL::R6_CART_C$new()
+  alg$setParameters(train, test, maxDepth)
+  return (alg)
+}
+
+CART_R <- function(train, test, maxDepth=90){
+  alg <- RKEEL::R6_CART_R$new()
+  alg$setParameters(train, test, maxDepth)
+  return (alg)
+}
+
+CenterNN_C <- function(train, test){
+  alg <- RKEEL::R6_CenterNN_C$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+CFAR_C <- function(train, test, min_support=0.1, min_confidence=0.85, threshold=0.15, num_labels=5, seed=-1){
+  alg <- RKEEL::R6_CFAR_C$new()
+  alg$setParameters(train, test, min_support, min_confidence, threshold, num_labels, seed)
+  return (alg)
+}
+
+CFKNN_C <- function(train, test, k=3, alpha=0.6, seed=-1){
+  alg <- RKEEL::R6_CFKNN_C$new()
+  alg$setParameters(train, test, k, alpha, seed)
+  return (alg)
+}
+
+CHC_C <- function(train, test, pop_size=50, evaluations=10000, alfa=0.5, restart_change=0.35, prob_restart=0.25, prob_diverge=0.05, k=1, distance="Euclidean", seed=-1){
+  alg <- RKEEL::R6_CHC_C$new()
+  alg$setParameters(train, test, pop_size, evaluations, alfa, restart_change, prob_restart, prob_diverge, k, distance, seed)
+  return (alg)
+}
+
+CHC_TSS <- function(train, test, pop_size=50, evaluations=10000, alfa=0.5, change=0.35, restart_0to1=0.25, diverge_0to1=0.05, nn=1, distance="Euclidean", seed=-1){
+  alg <- RKEEL::R6_CHC_TSS$new()
+  alg$setParameters(train, test, pop_size, evaluations, alfa, change, restart_0to1, diverge_0to1, nn, distance, seed)
+  return (alg)
+}
+
+Chi2_D <- function(train, test, inconsistencyThreshold=0.02){
+  alg <- RKEEL::R6_Chi2_D$new()
+  alg$setParameters(train, test, inconsistencyThreshold)
+  return (alg)
+}
+
+CleanAttributes_TR <- function(train, test){
+  alg <- RKEEL::R6_CleanAttributes_TR$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+ClusterAnalysis_D <- function(train, test){
+  alg <- RKEEL::R6_ClusterAnalysis_D$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+CNN_C <- function(train, test, k=1, distance="Euclidean", seed=-1){
+  alg <- RKEEL::R6_CNN_C$new()
+  alg$setParameters(train, test, k, distance, seed)
+  return (alg)
+}
+
+CPW_C <- function(train, test, beta=8.0, mu=0.001, ro=0.001, epsilon=0.001){
+  alg <- RKEEL::R6_CPW_C$new()
+  alg$setParameters(train, test, beta, mu, ro, epsilon)
+  return (alg)
+}
+
+C_SVM_C <- function(train, test, KernelType="RBF", C=100.0, eps=0.001, degree=1, gamma=0.01, coef0=0.0, nu=0.1, p=1.0, shrinking=1, seed=-1){
+  alg <- RKEEL::R6_C_SVM_C$new()
+  alg$setParameters(train, test, KernelType, C, eps, degree, gamma, coef0, nu, p, shrinking, seed)
+  return (alg)
+}
+
+CW_C <- function(train, test, beta=8.0, mu=0.001, epsilon=0.001){
+  alg <- RKEEL::R6_CW_C$new()
+  alg$setParameters(train, test, beta, mu, epsilon)
+  return (alg)
+}
+
+DecimalScaling_TR <- function(train, test){
+  alg <- RKEEL::R6_DecimalScaling_TR$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+DecrRBFN_C <- function(train, test, percent=0.1, num_neurons_ini=20, alfa=0.3, seed=-1){
+  alg <- RKEEL::R6_DecrRBFN_C$new()
+  alg$setParameters(train, test, percent, num_neurons_ini, alfa, seed)
+  return (alg)
+}
+
+Deeps_C <- function(train, test, beta=0.12){
+  alg <- RKEEL::R6_Deeps_C$new()
+  alg$setParameters(train, test, beta)
+  return (alg)
+}
+
+
+DSM_C <- function(train, test, iterations=100, percentage=10, alpha_0=0.1, seed=-1){
+  alg <- RKEEL::R6_DSM_C$new()
+  alg$setParameters(train, test, iterations, percentage, alpha_0, seed)
+  return (alg)
+}
+
+DT_GA_C <- function(train, test, confidence=0.25, instancesPerLeaf=2, geneticAlgorithmApproach="GA-LARGE-SN", threshold=10, numGenerations=50, popSize=200, crossoverProb=0.8, mutProb=0.01, seed=-1){
+  alg <- RKEEL::R6_DT_GA_C$new()
+  alg$setParameters(train, test, confidence, instancesPerLeaf, geneticAlgorithmApproach, threshold, numGenerations, popSize, crossoverProb, mutProb, seed)
+  return (alg)
+}
+
+EPSILON_SVR_R <- function(train, test, KernelType="RBF", C=100.0, eps=0.001, degree=3, gamma=0.01, coef0=0.0, nu=0.5, p=1.0, shrinking=0, seed=-1){
+  alg <- RKEEL::R6_EPSILON_SVR_R$new()
+  alg$setParameters(train, test, KernelType, C, eps, degree, gamma, coef0, nu, p, shrinking, seed)
+  return (alg)
+}
+
+Falco_GP_C <- function(train, test, population_size=200, max_generations=200, max_deriv_size=20, rec_prob=0.8, mut_prob=0.1, copy_prob=0.01, alpha=0.9, seed=-1){
+  alg <- RKEEL::R6_Falco_GP_C$new()
+  alg$setParameters(train, test, population_size, max_generations, max_deriv_size, rec_prob, mut_prob, copy_prob, alpha, seed)
+  return (alg)
+}
+
+FuzzyFARCHD_C <- function(train, test, linguistic_values=5, min_support=0.05, max_confidence=0.8, depth_max=3, K=2, max_evaluations=15000, pop_size=50, alpha=0.15, bits_per_gen=30, inference_type=1, seed=-1){
+  alg <- RKEEL::R6_FuzzyFARCHD_C$new()
+  alg$setParameters(train, test, linguistic_values, min_support, max_confidence, depth_max, K, max_evaluations, pop_size, alpha, bits_per_gen, inference_type, seed)
+  return (alg)
+}
+
+FCRA_C <- function(train, test, generations=50, pop_size=30, length_S_C=10, WCAR=10.0, WV=1.0, crossover_prob=1.0, mut_prob=0.01, n1=0.001, n2=0.1, max_iter=100, linguistic_values=5, seed=-1){
+  alg <- RKEEL::R6_FCRA_C$new()
+  alg$setParameters(train, test, generations, pop_size, length_S_C, WCAR, WV, crossover_prob, mut_prob, n1, n2, max_iter, linguistic_values, seed)
+  return (alg)
+}
+
+FRNN_C <- function(train, test){
+  alg <- RKEEL::R6_FRNN_C$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+FRSBM_R <- function(train, test, numrules=1, sigma=0.0001, seed=-1){
+  alg <- RKEEL::R6_FRSBM_R$new()
+  alg$setParameters(train, test, numrules, sigma, seed)
+  return (alg)
+}
+
+FURIA_C <- function(train, test, optimizations=2, folds=3, seed=-1){
+  alg <- RKEEL::R6_FURIA_C$new()
+  alg$setParameters(train, test, optimizations, folds, seed)
+  return (alg)
+}
+
+FuzzyKNN_C <- function(train, test, k=3, M=2.0, initialization="CRISP", init_k=3){
+  alg <- RKEEL::R6_FuzzyKNN_C$new()
+  alg$setParameters(train, test, k, M, initialization, init_k)
+  return (alg)
+}
+
+FuzzyNPC_C <- function(train, test, M=2.0){
+  alg <- RKEEL::R6_FuzzyNPC_C$new()
+  alg$setParameters(train, test, M=2.0)
+  return (alg)
+}
+
+GANN_C <- function(train, test, hidden_layers=2, hidden_nodes=15, transfer="Htan", eta=0.15, alpha=0.1, lambda=0.0, test_data=TRUE, validation_data=FALSE, cross_validation=FALSE, BP_cycles=10000, improve=0.01, tipify_inputs=TRUE, save_all=FALSE, elite=0.1, num_individuals=100, w_range=5.0, connectivity=0.5, P_bp=0.25, P_param=0.1, P_struct=0.1, max_generations=100, seed=-1){
+  alg <- RKEEL::R6_GANN_C$new()
+  alg$setParameters(train, test, hidden_layers, hidden_nodes, transfer, eta, alpha, lambda, test_data, validation_data, cross_validation, BP_cycles, improve, tipify_inputs, save_all, elite, num_individuals, w_range, connectivity, P_bp, P_param, P_struct, max_generations, seed)
+  return (alg)
+}
+
+GANN_R <- function(train, test, hidden_layers=2, hidden_nodes=15, transfer="Htan", eta=0.15, alpha=0.1, lambda=0.0, test_data=TRUE, validation_data=FALSE, cross_validation=FALSE, BP_cycles=10000, improve=0.01, tipify_inputs=TRUE, save_all=FALSE, elite=0.1, num_individuals=100, w_range=5.0, connectivity=0.5, P_bp=0.25, P_param=0.1, P_struct=0.1, max_generations=100, seed=-1){
+  alg <- RKEEL::R6_GANN_R$new()
+  alg$setParameters(train, test, hidden_layers, hidden_nodes, transfer, eta, alpha, lambda, test_data, validation_data, cross_validation, BP_cycles, improve, tipify_inputs, save_all, elite, num_individuals, w_range, connectivity, P_bp, P_param, P_struct, max_generations, seed)
+  return (alg)
+}
+
+GFS_AdaBoost_C <- function(train, test, numLabels=3, numRules=8, seed=-1){
+  alg <- RKEEL::R6_GFS_AdaBoost_C$new()
+  alg$setParameters(train, test, numLabels, numRules, seed)
+  return (alg)
+}
+
+GFS_GP_R <- function(train, test, numLabels=3, numRules=8, popSize=30, numisland=2, steady=1, numIter=100, tourSize=4, mutProb=0.01, aplMut=0.1, probMigra=0.001, probOptimLocal=0.00, numOptimLocal=0, idOptimLocal=0, nichinggap=0, maxindniche=8, probintraniche=0.75, probcrossga=0.5, probmutaga=0.5, lenchaingap=10, maxtreeheight=8, seed=-1){
+  alg <- RKEEL::R6_GFS_GP_R$new()
+  alg$setParameters(train, test, numLabels, numRules, popSize, numisland, steady, numIter, tourSize, mutProb, aplMut, probMigra, probOptimLocal, numOptimLocal, idOptimLocal, nichinggap, maxindniche, probintraniche, probcrossga, probmutaga, lenchaingap, maxtreeheight, seed)
+  return (alg)
+}
+
+GFS_GSP_R <- function(train, test, numLabels=3, numRules=8, deltafitsap=0.5, p0sap=0.5, p1sap=0.5, amplMut=0.1, nsubsap=10, probOptimLocal=0.00, numOptimLocal=0, idOptimLocal=0, probcrossga=0.5, probmutaga=0.5, lenchaingap=10, maxtreeheight=8, numItera=10000, seed=-1){
+  alg <- RKEEL::R6_GFS_GSP_R$new()
+  alg$setParameters(train, test, numLabels, numRules, deltafitsap, p0sap, p1sap, amplMut, nsubsap, probOptimLocal, numOptimLocal, idOptimLocal, probcrossga, probmutaga, lenchaingap, maxtreeheight, numItera, seed)
+  return (alg)
+}
+
+GFS_LogitBoost_C <- function(train, test, numLabels=3, numRules=25, seed=-1){
+  alg <- RKEEL::R6_GFS_LogitBoost_C$new()
+  alg$setParameters(train, test, numLabels, numRules, seed)
+  return (alg)
+}
+
+GFS_RB_MF_R <- function(train, test, numLabels=3, popSize=50, generations=100, crossProb=0.9, mutProb=0.1, seed=-1){
+  alg <- RKEEL::R6_GFS_RB_MF_R$new()
+  alg$setParameters(train, test, numLabels, popSize, generations, crossProb, mutProb, seed)
+  return (alg)
+}
+
+GGA_FS <- function(train, test, cross_prob=0.7, mut_prob=0.01, pop_size=50, evaluations=10000, beta=0.99, nn=1, elitism=TRUE, seed=-1){
+  alg <- RKEEL::R6_GGA_FS$new()
+  alg$setParameters(train, test, cross_prob, mut_prob, pop_size, evaluations, beta, nn, elitism, seed)
+  return (alg)
+}
+
+ID3_C <- function(train, test){
+  alg <- RKEEL::R6_ID3_C$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+ID3_D <- function(train, test){
+  alg <- RKEEL::R6_ID3_D$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+IF_KNN_C <- function(train, test, K=3, mA=0.6, vA=0.4, mR=0.3, vR=0.7, k=5){
+  alg <- RKEEL::R6_IF_KNN_C$new()
+  alg$setParameters(train, test, K, mA, vA, mR, vR, k)
+  return (alg)
+}
+
+Ignore_MV <- function(train, test){
+  alg <- RKEEL::R6_Ignore_MV$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+IncrRBFN_C <- function(train, test, epsilon=0.1, alfa=0.3, delta=0.5, seed=-1){
+  alg <- RKEEL::R6_IncrRBFN_C$new()
+  alg$setParameters(train, test, epsilon, alfa, delta, seed)
+  return (alg)
+}
+
+IterativePartitioningFilter_F <- function(train, test, numPartitions=5, filterType="consensus", confidence=0.25, itemsetsPerLeaf=2, seed=-1){
+  alg <- RKEEL::R6_IterativePartitioningFilter_F$new()
+  alg$setParameters(train, test, numPartitions, filterType, confidence, itemsetsPerLeaf, seed)
+  return (alg)
+}
+
+JFKNN_C <- function(train, test){
+  alg <- RKEEL::R6_JFKNN_C$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+Kernel_C <- function(train, test, sigma=0.01, seed=-1){
+  alg <- RKEEL::R6_Kernel_C$new()
+  alg$setParameters(train, test, sigma, seed)
+  return (alg)
+}
+
+KMeans_MV <- function(train, test, k=10, error=100, iterations=100, seed=-1){
+  alg <- RKEEL::R6_KMeans_MV$new()
+  alg$setParameters(train, test, k, error, iterations, seed)
+  return (alg)
+}
+
+KNN_C <- function(train, test, k=1, distance="Euclidean"){
+  alg <- RKEEL::R6_KNN_C$new()
+  alg$setParameters(train, test, k, distance)
+  return (alg)
+}
+
+KNN_MV <- function(train, test, k=10){
+  alg <- RKEEL::R6_KNN_MV$new()
+  alg$setParameters(train, test, k)
+  return (alg)
+}
+
+KSNN_C <- function(train, test, k=1){
+  alg <- RKEEL::R6_KSNN_C$new()
+  alg$setParameters(train, test, k)
+  return (alg)
+}
+
+KStar_C <- function(train, test, selection_method="Fixed", blend=0.2, seed=-1){
+  alg <- RKEEL::R6_KStar_C$new()
+  alg$setParameters(train, test, selection_method, blend, seed)
+  return (alg)
+}
+
+LDA_C <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_LDA_C$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+LinearLMS_C <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_LinearLMS_C$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+LinearLMS_R <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_LinearLMS_R$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+Logistic_C <- function(train, test, ridge=1e-8, maxIter=-1){
+  alg <- RKEEL::R6_Logistic_C$new()
+  alg$setParameters(train, test, ridge, maxIter)
+  return (alg)
+}
+
+LVF_IEP_FS <- function(train, test, paramKNN=1, maxLoops=770, inconAllow=0, seed=-1){
+  alg <- RKEEL::R6_LVF_IEP_FS$new()
+  alg$setParameters(train, test, paramKNN, maxLoops, inconAllow, seed)
+  return (alg)
+}
+
+M5_R <- function(train, test, type="m", pruningFactor=2, unsmoothed=TRUE){
+  alg <- RKEEL::R6_M5_R$new()
+  alg$setParameters(train, test, type, pruningFactor, unsmoothed)
+  return (alg)
+}
+
+M5Rules_R <- function(train, test, pruningFactor=2, heuristic="Coverage"){
+  alg <- RKEEL::R6_M5Rules_R$new()
+  alg$setParameters(train, test, pruningFactor, heuristic)
+  return (alg)
+}
+
+MinMax_TR <- function(train, test, newMin=0.0, newMax=1.0){
+  alg <- RKEEL::R6_MinMax_TR$new()
+  alg$setParameters(train, test, newMin, newMax)
+  return (alg)
+}
+
+MLP_BP_C <- function(train, test, hidden_layers=2, hidden_nodes=15, transfer="Htan", eta=0.15, alpha=0.1, lambda=0.0, test_data=TRUE, validation_data=FALSE, cross_validation=FALSE, cycles=10000, improve=0.01, tipify_inputs=TRUE, save_all=FALSE, seed=-1){
+  alg <- RKEEL::R6_MLP_BP_C$new()
+  alg$setParameters(train, test, hidden_layers, hidden_nodes, transfer, eta, alpha, lambda, test_data, validation_data, cross_validation, cycles, improve, tipify_inputs, save_all, seed)
+  return (alg)
+}
+
+MLP_BP_R <- function(train, test, hidden_layers=2, hidden_nodes=15, transfer="Htan", eta=0.15, alpha=0.1, lambda=0.0, test_data=TRUE, validation_data=FALSE, cross_validation=FALSE, cycles=10000, improve=0.01, tipify_inputs=TRUE, save_all=FALSE, seed=-1){
+  alg <- RKEEL::R6_MLP_BP_R$new()
+  alg$setParameters(train, test, hidden_layers, hidden_nodes, transfer, eta, alpha, lambda, test_data, validation_data, cross_validation, cycles, improve, tipify_inputs, save_all, seed)
+  return (alg)
+}
+
+ModelCS_TSS <- function(train, test, k=3, distance="Euclidean"){
+  alg <- RKEEL::R6_ModelCS_TSS$new()
+  alg$setParameters(train, test, k, distance)
+  return (alg)
+}
+
+MostCommon_MV <- function(train, test){
+  alg <- RKEEL::R6_MostCommon_MV$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+NB_C <- function(train, test){
+  alg <- RKEEL::R6_NB_C$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+NM_C <- function(train, test){
+  alg <- RKEEL::R6_NM_C$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+NNEP_C <- function(train, test, hidden_nodes=4, transfer="Product_Unit", generations=200, seed=-1){
+  alg <- RKEEL::R6_NNEP_C$new()
+  alg$setParameters(train, test, hidden_nodes, transfer, generations, seed)
+  return (alg)
+}
+
+NNEP_R <- function(train, test, hidden_nodes=4, transfer="Product_Unit", generations=1000, seed=-1){
+  alg <- RKEEL::R6_NNEP_C$new()
+  alg$setParameters(train, test, hidden_nodes, transfer, generations, seed)
+  return (alg)
+}
+
+Nominal2Binary_TR <- function(train, test){
+  alg <- RKEEL::R6_Nominal2Binary_TR$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+NU_SVM_C <- function(train, test, KernelType="RBF", C=1000.0, eps=0.001, degree=10, gamma=0.01, coef0=0.0, nu=0.1, p=1.0, shrinking=1, seed=-1){
+  alg <- RKEEL::R6_NU_SVM_C$new()
+  alg$setParameters(train, test, KernelType, C, eps, degree, gamma, coef0, nu, p, shrinking, seed)
+  return (alg)
+}
+
+NU_SVR_R <- function(train, test, KernelType="RBF", C=100.0, eps=0.001, degree=1, gamma=0.01, coef0=0.0, nu=0.1, p=1.0, shrinking=1, seed=-1){
+  alg <- RKEEL::R6_NU_SVR_R$new()
+  alg$setParameters(train, test, KernelType, C, eps, degree, gamma, coef0, nu, p, shrinking, seed)
+  return (alg)
+}
+
+PART_C <- function(train, test, confidence=0.25, itemsetsPerLeaf=2){
+  alg <- RKEEL::R6_PART_C$new()
+  alg$setParameters(train, test, confidence, itemsetsPerLeaf)
+  return (alg)
+}
+
+PDFC_C <- function(train, test, C=100.0, d=0.25, tolerance=0.001, epsilon=1.0E-12, PDRFtype="Gaussian", nominal_to_binary=TRUE, preprocess_type="Normalize", seed=-1){
+  alg <- RKEEL::R6_PDFC_C$new()
+  alg$setParameters(train, test, C, d, tolerance, epsilon, PDRFtype, nominal_to_binary, preprocess_type, seed)
+  return (alg)
+}
+
+PFKNN_C <- function(train, test, k=3, seed=-1){
+  alg <- RKEEL::R6_PFKNN_C$new()
+  alg$setParameters(train, test, k, seed)
+  return (alg)
+}
+
+PNN_C <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_PNN_C$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+PolQuadraticLMS_C <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_PolQuadraticLMS_C$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+PolQuadraticLMS_R <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_PolQuadraticLMS_R$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+POP_TSS <- function(train, test){
+  alg <- RKEEL::R6_POP_TSS$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+PRISM_C <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_PRISM_C$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+Proportional_D <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_Proportional_D$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+PSO_ACO_C <- function(train, test, max_uncovered_samples=20, min_saples_by_rule=2, max_iterations_without_converge=100, enviromentSize=3, numParticles=100, x=0.72984, c1=2.05, c2=2.05, seed=-1){
+  alg <- RKEEL::R6_PSO_ACO_C$new()
+  alg$setParameters(train, test, max_uncovered_samples, min_saples_by_rule, max_iterations_without_converge, enviromentSize, numParticles, x, c1, c2, seed)
+  return (alg)
+}
+
+PSRCG_TSS <- function(train, test, distance="Euclidean"){
+  alg <- RKEEL::R6_PSRCG_TSS$new()
+  alg$setParameters(train, test, distance)
+  return (alg)
+}
+
+PUBLIC_C <- function(train, test, nodesBetweenPrune=25, estimateToPrune="PUBLIC(1)"){
+  alg <- RKEEL::R6_PUBLIC_C$new()
+  alg$setParameters(train, test, nodesBetweenPrune, estimateToPrune)
+  return (alg)
+}
+
+PW_C <- function(train, test, beta=8.0, ro=0.001, epsilon=0.001){
+  alg <- RKEEL::R6_PW_C$new()
+  alg$setParameters(train, test, beta, ro, epsilon)
+  return (alg)
+}
+
+QDA_C <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_QDA_C$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+RBFN_C <- function(train, test, neurons=50, seed=-1){
+  alg <- RKEEL::R6_RBFN_C$new()
+  alg$setParameters(train, test, neurons, seed)
+  return (alg)
+}
+
+RBFN_R <- function(train, test, neurons=50, seed=-1){
+  alg <- RKEEL::R6_RBFN_R$new()
+  alg$setParameters(train, test, neurons, seed)
+  return (alg)
+}
+
+Relief_FS <- function(train, test, paramKNN=1, relevanceThreshold=0.20, numInstancesSampled=1000, seed=-1){
+  alg <- RKEEL::R6_Relief_FS$new()
+  alg$setParameters(train, test, paramKNN, relevanceThreshold, numInstancesSampled, seed)
+  return (alg)
+}
+
+Ripper_C <- function(train, test, grow_pct=0.66, k=2, seed=-1){
+  alg <- RKEEL::R6_Ripper_C$new()
+  alg$setParameters(train, test, grow_pct, k, seed)
+  return (alg)
+}
+
+RISE_C <- function(train, test, Q=1, S=2){
+  alg <- RKEEL::R6_RISE_C$new()
+  alg$setParameters(train, test, Q, S)
+  return (alg)
+}
+
+SA_IEP_FS <- function(train, test, tInit=100, maxLoops=770, neighbors=20, seed=-1){
+  alg <- RKEEL::R6_SA_IEP_FS$new()
+  alg$setParameters(train, test, tInit, maxLoops, neighbors, seed)
+  return (alg)
+}
+
+SaturationFilter_F <- function(train, test, seed=-1){
+  alg <- RKEEL::R6_SaturationFilter_F$new()
+  alg$setParameters(train, test, seed)
+  return (alg)
+}
+
+SFS_IEP_FS <- function(train, test, threshold=0.005, seed=-1){
+  alg <- RKEEL::R6_SFS_IEP_FS$new()
+  alg$setParameters(train, test, threshold, seed)
+  return (alg)
+}
+
+SGA_C <- function(train, test, mut_prob_1to0=0.01, mut_prob_0to1=0.001, cross_prob=1, pop_size=50, evaluations=10000, alfa=0.5, selection_type="orden_based", k=1, distance="Euclidean", seed=-1){
+  alg <- RKEEL::R6_SGA_C$new()
+  alg$setParameters(train, test, mut_prob_1to0, mut_prob_0to1, cross_prob, pop_size, evaluations, alfa, selection_type, k, distance, seed)
+  return (alg)
+}
+
+SGA_TSS <- function(train, test, mut_prob_1to0=0.01, mut_prob_0to1=0.001, cross_prob=1, pop_size=50, evaluations=10000, alfa=0.5, selection_type="orden_based", k=1, distance="Euclidean", seed=-1){
+  alg <- RKEEL::R6_SGA_TSS$new()
+  alg$setParameters(train, test, mut_prob_1to0, mut_prob_0to1, cross_prob, pop_size, evaluations, alfa, selection_type, k, distance, seed)
+  return (alg)
+}
+
+Shrink_C <- function(train, test, k=1, distance="Euclidean"){
+  alg <- RKEEL::R6_Shrink_C$new()
+  alg$setParameters(train, test, k, distance)
+  return (alg)
+}
+
+Slipper_C <- function(train, test, grow_pct=0.66, numBoosting=100, seed=-1){
+  alg <- RKEEL::R6_Slipper_C$new()
+  alg$setParameters(train, test, grow_pct, numBoosting, seed)
+  return (alg)
+}
+
+SMO_C <- function(train, test, C=1.0, toleranceParameter=0.001, epsilon=1.0e-12, RBFKernel_gamma=0.01, normalized_PolyKernel_exponent=1, normalized_PolyKernel_useLowerOrder=FALSE, PukKernel_omega=1.0, PukKernel_sigma=1.0, StringKernel_lambda=0.5, StringKernel_subsequenceLength=3, StringKernel_maxSubsequenceLength=9, StringKernel_normalize=FALSE,  StringKernel_pruning="None", KernelType="PolyKernel", FitLogisticModels=FALSE, ConvertNominalAttributesToBinary=TRUE, PreprocessType="Normalize", seed=-1){
+  alg <- RKEEL::R6_SMO_C$new()
+  alg$setParameters(train, test, C, toleranceParameter, epsilon, RBFKernel_gamma, normalized_PolyKernel_exponent, normalized_PolyKernel_useLowerOrder, PukKernel_omega, PukKernel_sigma, StringKernel_lambda, StringKernel_subsequenceLength, StringKernel_maxSubsequenceLength, StringKernel_normalize,  StringKernel_pruning, KernelType, FitLogisticModels, ConvertNominalAttributesToBinary, PreprocessType, seed)
+  return (alg)
+}
+
+SSGA_Integer_knn_FS <- function(train, test, paramKNN=1, nEval=5000, pop_size=100, numFeatures=3, seed=-1){
+  alg <- RKEEL::R6_SSGA_Integer_knn_FS$new()
+  alg$setParameters(train, test, paramKNN, nEval, pop_size, numFeatures, seed)
+  return (alg)
+}
+
+Tan_GP_C <- function(train, test, population_size=150, max_generations=100, max_deriv_size=20, rec_prob=0.8, mut_prob=0.1, copy_prob=0.01, w1=0.7, w2=0.8, elitist_prob=0.06, support=0.03, seed=-1){
+  alg <- RKEEL::R6_Tan_GP_C$new()
+  alg$setParameters(train, test, population_size, max_generations, max_deriv_size, rec_prob, mut_prob, copy_prob, w1, w2, elitist_prob, support, seed)
+  return (alg)
+}
+
+Thrift_R <- function(train, test, numLabels=3, popSize=61, evaluations=10000, crossProb=0.6, mutProb=0.1, seed=-1){
+  alg <- RKEEL::R6_Thrift_R$new()
+  alg$setParameters(train, test, numLabels, popSize, evaluations, crossProb, mutProb, seed)
+  return (alg)
+}
+
+UniformFrequency_D <- function(train, test, numIntervals=10, seed=-1){
+  alg <- RKEEL::R6_UniformFrequency_D$new()
+  alg$setParameters(train, test, numIntervals, seed)
+  return (alg)
+}
+
+UniformWidth_D <- function(train, test, numIntervals=10){
+  alg <- RKEEL::R6_UniformWidth_D$new()
+  alg$setParameters(train, test, numIntervals)
+  return (alg)
+}
+
+VWFuzzyKNN_C <- function(train, test, k=3, init_k=3){
+  alg <- RKEEL::R6_VWFuzzyKNN_C$new()
+  alg$setParameters(train, test, k, init_k)
+  return (alg)
+}
+
+WM_R <- function(train, test, numlabels=5, KB=FALSE){
+  alg <- RKEEL::R6_WM_R$new()
+  alg$setParameters(train, test, numlabels, KB)
+  return (alg)
+}
+
+ZScore_TR <- function(train, test){
+  alg <- RKEEL::R6_ZScore_TR$new()
+  alg$setParameters(train, test)
+  return (alg)
+}
+
+
+

@@ -1,0 +1,26 @@
+Package: RKEEL
+Type: Package
+Title: Using Keel in R Code
+Version: 1.1.15
+Depends: R (>= 3.0)
+Date: 2017-01-10
+Authors@R: c(
+	person("Jose M.", "Moyano", email = "i02momuj@uco.es", role = c("aut", "cre")),
+	person("Luciano", "Sanchez Ramos", email = "luciano@uniovi.es", role = "aut"),
+  person("Oliver", "Sanchez Marin", email = "oliversanchez718@gmail.com", role = "ctb")
+	)
+Author: Jose M. Moyano [aut, cre], Luciano Sanchez Ramos [aut], Oliver Sanchez Marin [ctb]
+Maintainer: Jose M. Moyano <i02momuj@uco.es>
+Description: KEEL is a popular Java software for a large number of different knowledge data discovery tasks.
+    This package takes the advantages of KEEL and R, allowing to use KEEL algorithms in simple R code.
+    The implemented R code layer between R and KEEL makes easy both using KEEL algorithms in R as implementing new algorithms for 'RKEEL' in a very simple way.
+    It includes more than 100 algorithms for classification, regression and preprocess, which allows a more complete experimentation process.
+    For more information about KEEL, see <http://www.keel.es/>.
+SystemRequirements: Java (>= 7.0)
+License: GPL
+Imports: R6, XML, doParallel, foreach, gdata, RKEELjars (>= 1.0.14),
+        RKEELdata (>= 1.0.2), pmml, arules, Matrix
+NeedsCompilation: no
+Packaged: 2017-01-10 19:09:45 UTC; jose
+Repository: CRAN
+Date/Publication: 2017-01-11 08:59:23

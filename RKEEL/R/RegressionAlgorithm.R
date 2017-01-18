@@ -83,10 +83,10 @@ RegressionAlgorithm <- R6::R6Class("RegressionAlgorithm",
         wdPath <- getwd()
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {
-          system("java -jar RunKeel.jar", show.output.on.console = FALSE)
+          system(paste0(private$javaPath, "java -jar RunKeel.jar"), show.output.on.console = FALSE)
         }
         else {
-          system("java -jar RunKeel.jar", ignore.stdout = TRUE)
+          system(paste0(private$javaPath, "java -jar RunKeel.jar"), ignore.stdout = TRUE)
         }
         setwd(wdPath)
 

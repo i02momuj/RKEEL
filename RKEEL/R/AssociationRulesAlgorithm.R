@@ -30,7 +30,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
       #private$testFilename <- "test.dat"
       #writeDatFromDataframe(test, paste0(private$dataPath, "test.dat"))
       #writeDatFromDataframes(train, test, paste0(private$dataPath, private$trainFilename), paste0(private$dataPath, private$testFilename))
-      
+
       private$datFilename <- "dat.dat"
 
       #Assign datasets
@@ -111,12 +111,13 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
 
         #Change work directory to execute .jar
         wdPath <- getwd()
+        cat(paste0(private$javaPath, "java -jar RunKeel.jar"))
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {
-          system("java -jar RunKeel.jar", show.output.on.console = FALSE)
+          system(paste0(private$javaPath, "java -jar RunKeel.jar"), show.output.on.console = FALSE)
         }
         else {
-          system("java -jar RunKeel.jar", ignore.stdout = TRUE)
+          system(paste0(private$javaPath, "java -jar RunKeel.jar"), ignore.stdout = TRUE)
         }
         setwd(wdPath)
 
@@ -182,7 +183,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
         if(inilen < finallen){
           colnames(rulestmp)<-c(names(rulestmp)[-finallen],colName)
         }
-        
+
         arules::quality(self$rules) <- rulestmp
 
       }, error = function(err) {
@@ -332,7 +333,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
       text <- paste0(text, "\n\n")
 
       writeLines(text, con = paste0(private$mainPath, "/scripts/KEELToPMML/TST", private$algorithmName, "/", "config0s0", ".txt"))
-      
+
       #------KeelLateXTables-------
       #Ficheros de entrada
       inputDataStringPMML = paste0("\"../datasets/", private$dataName, "/", private$datFilename, "\" \"../results/", private$algorithmName, ".", private$dataName, "/result0s0", ".tst\" \"../results/", private$algorithmName, ".",private$dataName, "/result0s0", ".tra\"")
@@ -386,8 +387,8 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
         private$resultLatex <- readLines(latexfile,n = -1)
       })
 
-      
-    
+
+
     },
 
 
@@ -411,7 +412,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
       #add attributes name and type
       tinputs <- "@inputs"
       toutputs <- "@outputs"
-      
+
       for(i in 1:length(colnames(data))){
 
         #add "@attribute" and attribute name
