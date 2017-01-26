@@ -1,18 +1,14 @@
 Package: RKEELjars
 Type: Package
 Title: Java Executable .jar Files for 'RKEEL'
-Version: 1.0.14
-Date: 2017-01-09
+Version: 1.0.15
+Date: 2017-01-26
 Authors@R: c(
-	person("Jose", "Moyano", email = "i02momuj@uco.es", role = c("aut", "cre")),
+	person("Jose M.", "Moyano", email = "jmoyano@uco.es", role = c("aut", "cre")),
 	person("Luciano", "Sanchez Ramos", email = "luciano@uniovi.es", role = "aut")
 	)
-Author: Jose Moyano [aut, cre], Luciano Sanchez Ramos [aut]
-Maintainer: Jose Moyano <i02momuj@uco.es>
+Author: Jose M. Moyano [aut, cre], Luciano Sanchez Ramos [aut]
+Maintainer: Jose M. Moyano <jmoyano@uco.es>
 Description: KEEL is a popular Java software for a large number of different knowledge data discovery tasks. Furthermore, 'RKEEL' is a package with a R code layer between R and KEEL, for using KEEL in R code. This package downloads and install the .jar files necessary for 'RKEEL' algorithms execution. For more information about KEEL, see <http://www.keel.es/>.
 License: GPL-3
 Imports: downloader
-NeedsCompilation: no
-Packaged: 2017-01-09 09:14:37 UTC; jose
-Repository: CRAN
-Date/Publication: 2017-01-09 15:16:50
