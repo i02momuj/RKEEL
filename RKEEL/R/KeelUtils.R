@@ -39,19 +39,94 @@ runSequential <- function(algorithmList) {
   if(class(algorithmList) != "list") {
     stop("Error. Argument must be a list with the algorithm objects.")
   }
+  cores <- 1
+  cl <- parallel::makeCluster(cores)
+  doParallel::registerDoParallel(cl)
 
-  cat("Executing experiment sequential", sep="\n")
+  cat(paste0("Executing experiment sequentially"), sep="\n")
 
-  #Eexcute algorithms sequentially
+  #Execute algorithms in parallel
   i<-1
-  exec_algs <- foreach(i=1:length(algorithmList)) %do% {
+  exec_algs <- foreach(i=1:length(algorithmList)) %dopar% {
     algorithmList[[i]]$run()
     return(algorithmList[[i]])
   }
+  #Stop cluster
+  parallel::stopCluster(cl)
 
   cat("Experiment executed successfully", sep="\n")
 
   return(exec_algs)
+}
+
+
+runCV <- function(algorithm, dataset, numFolds, cores) {
+
+  if(missing(cores)) {
+    #Assign num of cores
+    cores <- 1
+  }
+
+  #Check the number of folds
+  if(numFolds < 2) {
+    stop("The number of folds for cross-validation must be >= 2.")
+  }
+
+  #Random shuffle
+  newData <- dataset[sample(nrow(dataset)), ]
+
+  #Create folds
+  folds <- cut(seq(1, nrow(newData)), breaks=numFolds, labels=FALSE)
+
+  testData <- NULL
+  trainData <- NULL
+  list <- NULL
+
+  for(i in 1:numFolds){
+    testIndexes <- which(folds==i, arr.ind=TRUE)
+    testData[[i]] <- newData[testIndexes, ]
+    trainData[[i]] <- newData[-testIndexes, ]
+
+    list[[i]] <- algorithm$clone()
+    list[[i]]$setParameters(train=trainData[[i]], test=testData[[i]])
+  }
+
+  execAlgs <- runParallel(list, cores)
+
+  listResults <- NULL
+  listResults[[1]] <- ClassificationResults$new(execAlgs[[1]]$testPredictions)
+  accuracy <- listResults[[1]]$accuracy
+  precision <- listResults[[1]]$precision
+  recall <- listResults[[1]]$recall
+  FMeasure <- listResults[[1]]$FMeasure
+  unclassified <- listResults[[1]]$unclassified
+
+  for(i in 2:numFolds){
+    listResults[[i]] <- ClassificationResults$new(execAlgs[[i]]$testPredictions)
+    accuracy <- accuracy + listResults[[i]]$accuracy
+    precision <- precision + listResults[[i]]$precision
+    recall <- recall + listResults[[i]]$recall
+    FMeasure <- FMeasure + listResults[[i]]$FMeasure
+    unclassified <- unclassified + listResults[[i]]$unclassified
+  }
+
+  accuracy <- accuracy/numFolds
+  precision <- precision/numFolds
+  recall <- recall/numFolds
+  FMeasure <- FMeasure/numFolds
+  unclassified <- unclassified/numFolds
+
+  results <- listResults[[1]]$clone()
+
+  results$accuracy <- accuracy
+  results$precision <- precision
+  results$recall <- recall
+  results$FMeasure <- FMeasure
+  results$confusionMatrix <- NULL
+  results$predictions <- NULL
+  results$unclassified <- unclassified
+
+  return(results)
 }
 
 

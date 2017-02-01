@@ -48,7 +48,14 @@ getKeelDatasetList <- function(){
                 "forestFires",
                 "friedman",
                 "mv",
-                "plastic"
+                "plastic",
+				
+				#Unsupervised
+				"bolts",
+				"polution",
+				"solarFlare",
+				"transactions10k",
+				"weather"				
                 )
 
   return(dataList)

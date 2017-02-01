@@ -1,7 +1,7 @@
 Package: RKEEL
 Type: Package
 Title: Using Keel in R Code
-Version: 1.1.19
+Version: 1.1.21
 Depends: R (>= 3.2.0)
 Date: 2017-01-26
 Authors@R: c(

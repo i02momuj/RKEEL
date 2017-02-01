@@ -1,8 +1,8 @@
 Package: RKEELdata
 Type: Package
 Title: Datasets from KEEL for it Use in RKEEL
-Version: 1.0.3
-Date: 2017-01-26
+Version: 1.0.4
+Date: 2017-01-27
 Authors@R: c(
 	person("Jose M.", "Moyano", email = "jmoyano@uco.es", role = c("aut", "cre")),
 	person("Luciano", "Sanchez Ramos", email = "luciano@uniovi.es", role = "aut")
