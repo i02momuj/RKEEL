@@ -1,7 +1,6 @@
-# RKEEL
-###RKEEL: Using Keel in R code
+# RKEEL: Using Keel in R code
 
-##INSTALL
+## Install RKEEL
 There is two ways to install RKEEL package.
 
 First and better, it is possible to install it from CRAN repository. For that, only have to type the following:
@@ -22,7 +21,7 @@ Then, in R, only have to type:
 ```
 
 
-##CITATION
+## CITATION
 In order to cite this work, use the following reference or the *citation.bib* file to use in latex.
 
-Moyano, J.M., & Sanchez, L. (2016). RKEEL: Using KEEL in R code. In *Fuzzy Systems (FUZZ-IEEE), 2016 IEEE International Conference on* (pp. 257-264). IEEE. doi:10.1109/fuzz-ieee.2016.7737695
+> J.M. Moyano and L. Sanchez. (2016). RKEEL: Using KEEL in R code. In *Fuzzy Systems (FUZZ-IEEE), 2016 IEEE International Conference on* (pp. 257-264). IEEE. doi:10.1109/fuzz-ieee.2016.7737695
