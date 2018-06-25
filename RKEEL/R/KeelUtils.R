@@ -509,6 +509,150 @@ writeDatFromDataframes = function(trainData, testData, trainFileName, testFileNa
 }
 
 
+#Write train and test .dat dataset
+#Writing both together, there are fewer problems in min and max limits, and in classes
+writeDatFromDataframes = function(trainData, trsData, testData, trainFileName, trsFileName, testFileName){
+
+  #Check if data is a data.frame
+  if((!is.data.frame(trainData)) || (!is.data.frame(testData)) || (!is.data.frame(trsData))){
+    stop(paste0("Error. Must give a data.frame."))
+  }
+
+  #full dataset string
+  textTrain <- ""
+  textTrs <- ""
+  textTest <- ""
+
+  #add relationName
+  #text <- paste0(text, "@relation ", dataName, "\n")
+
+  list_return <- getAttributeLinesFromDataframes(trainData, trsData, testData)
+
+  textTrain <- paste0(textTrain, "@relation ", "train", "\n")
+  textTrs <- paste0(textTrs, "@relation ", "trs", "\n")
+  textTest <- paste0(textTest, "@relation ", "test", "\n")
+  textTrain <- paste0(textTrain, list_return[[1]])
+  textTrs <- paste0(textTrs, list_return[[1]])
+  textTest <- paste0(textTest, list_return[[1]])
+
+  attributesType <- list_return[[2]]
+
+  #TrainData
+  #Add "@data"
+  textTrain <- paste0(textTrain, "@data", "\n")
+
+  #Add data lines
+  for(i in 1:nrow(trainData)){
+
+    dataLine <- ""
+
+    for(j in 1:ncol(trainData)){
+      #add values separated with commas
+      if(is.na(trainData[i,j]) || is.nan(trainData[i,j]) || is.null(trainData[i,j])) {
+        dataLine <- paste0(dataLine, "<null>, ")
+      }
+      else{
+        if(attributesType[j] == "real"){
+          dataLine <- paste0(dataLine, format(as.numeric(as.character(trainData[i,j])), nsmall = 1), ", ")
+          #dataLine <- paste0(dataLine, data[i,j], ", ")
+        }
+        else{
+          dataLine <- paste0(dataLine, trainData[i,j], ", ")
+        }
+
+      }
+    }
+
+    #Delete last comma
+    dataLine <- gsub(", $", "", dataLine)
+    #Add data line to full dataset string
+    textTrain <- paste0(textTrain, dataLine, "\n")
+  }
+
+  #Save dataset file
+  fileConnTrain<-file(trainFileName)
+  writeLines(textTrain, fileConnTrain)
+  close(fileConnTrain)
+
+
+  #TrsData
+  #Add "@data"
+  textTrs <- paste0(textTrs, "@data", "\n")
+
+  #Add data lines
+  for(i in 1:nrow(trsData)){
+
+    dataLine <- ""
+
+    for(j in 1:ncol(trsData)){
+      #add values separated with commas
+      if(is.na(trsData[i,j]) || is.nan(trsData[i,j]) || is.null(trsData[i,j])) {
+        dataLine <- paste0(dataLine, "<null>, ")
+      }
+      else{
+        if(attributesType[j] == "real"){
+          dataLine <- paste0(dataLine, format(as.numeric(as.character(trsData[i,j])), nsmall = 1), ", ")
+          #dataLine <- paste0(dataLine, data[i,j], ", ")
+        }
+        else{
+          dataLine <- paste0(dataLine, trsData[i,j], ", ")
+        }
+
+      }
+    }
+
+    #Delete last comma
+    dataLine <- gsub(", $", "", dataLine)
+    #Add data line to full dataset string
+    textTrs <- paste0(textTrs, dataLine, "\n")
+  }
+
+  #Save dataset file
+  fileConnTrs<-file(trsFileName)
+  writeLines(textTrs, fileConnTrs)
+  close(fileConnTrs)
+
+
+  #TestData
+  #Add "@data"
+  textTest <- paste0(textTest, "@data", "\n")
+
+  #Add data lines
+  for(i in 1:nrow(testData)){
+
+    dataLine <- ""
+
+    for(j in 1:ncol(testData)){
+      #add values separated with commas
+      if(is.na(testData[i,j]) || is.nan(testData[i,j]) || is.null(testData[i,j])) {
+        dataLine <- paste0(dataLine, "<null>, ")
+      }
+      else{
+        if(attributesType[j] == "real"){
+          dataLine <- paste0(dataLine, format(as.numeric(as.character(testData[i,j])), nsmall = 1), ", ")
+          #dataLine <- paste0(dataLine, data[i,j], ", ")
+        }
+        else{
+          dataLine <- paste0(dataLine, testData[i,j], ", ")
+        }
+
+      }
+    }
+
+    #Delete last comma
+    dataLine <- gsub(", $", "", dataLine)
+    #Add data line to full dataset string
+    textTest <- paste0(textTest, dataLine, "\n")
+  }
+
+  #Save dataset file
+  fileConnTest<-file(testFileName)
+  writeLines(textTest, fileConnTest)
+  close(fileConnTest)
+
+}
+
+
 #Get attribute lines from train and test dataframes
 getAttributeLinesFromDataframes = function(trainData, testData){
 
@@ -570,6 +714,65 @@ getAttributeLinesFromDataframes = function(trainData, testData){
   return(list(text, attributesType))
 }
 
+getAttributeLinesFromDataframes = function(trainData, trsData, testData){
+
+  data <- rbind(trainData, trsData, testData)
+
+  text <- ""
+
+  attributesType <- c()
+  #add attributes name and type
+  for(i in 1:ncol(data)){
+
+    #add "@attribute" and attribute name
+    attribute <- paste0("@attribute ", colnames(data)[i])
+
+    #caterogical
+    if((typeof(data[,i]) == "character") || ( !is.na(match(TRUE, is.na(suppressWarnings(as.numeric(as.character(data[,i])))))) )  ){
+      #add "{" and first value
+      attribute <- paste0(attribute, " {", unique(data[,i])[1])
+      #Start in 2 for no comma problems; add all other values
+      for(l in 2:length(unique(data[,i]))){
+        attribute <- paste0(attribute, ", ", unique(data[,i])[l])
+      }
+      #finish with "}"
+      attribute <- paste0(attribute, "}")
+      attributesType <- c(attributesType, "character")
+    }
+    #real
+    else if(typeof(as.numeric(as.character(data[,i]))) == "double"){
+      #add type, min and max values
+      minValue <- format(min(na.omit(as.numeric(as.character(data[,i])))), nsmall = 1)
+      maxValue <- format(max(na.omit(as.numeric(as.character(data[,i])))), nsmall = 1)
+      attribute <- paste0(attribute, " real [", minValue, ", ", maxValue, "]")
+      attributesType <- c(attributesType, "real")
+    }
+    #integer
+    else if(typeof(as.numeric(as.character(data[,i]))) == "integer"){
+      #add type, min and max values
+      attribute <- paste0(attribute, " integer [", min(na.omit(as.numeric(as.character(data[,i])))), ", ", max(na.omit(as.numeric(as.character(data[,i])))), "]")
+      attributesType <- c(attributesType, "integer")
+    }
+    #Categorical
+    else if(!is.null(levels(data[,i]))){
+      #add "{" and first value
+      attribute <- paste0(attribute, " {", levels(data[,i])[1])
+      #Start in 2 for no comma problems; add all other values
+      for(l in 2:length(levels(data[,i]))){
+        attribute <- paste0(attribute, ", ", levels(data[,i])[l])
+      }
+      #finish with "}"
+      attribute <- paste0(attribute, "}")
+      attributesType <- c(attributesType, "character")
+    }
+
+    #Add attribute line to full dataset string
+    text <- paste0(text, attribute, "\n")
+
+  }
+
+  return(list(text, attributesType))
+}
 
 #Check if a dataset has continuous data
 hasContinuousData = function(data){

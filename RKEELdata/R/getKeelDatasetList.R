@@ -38,7 +38,7 @@ getKeelDatasetList <- function(){
                 "yeast1",
                 "yeast6",
                 "zoo",
-                
+
                 #Regression
                 "autoMPG6",
                 "autoMPG6_train",
@@ -49,13 +49,13 @@ getKeelDatasetList <- function(){
                 "friedman",
                 "mv",
                 "plastic",
-				
-				#Unsupervised
-				"bolts",
-				"polution",
-				"solarFlare",
-				"transactions10k",
-				"weather"				
+
+        				#Unsupervised
+        				"bolts",
+        				"polution",
+        				"solarFlare",
+        				"transactions10k",
+        				"weather"
                 )
 
   return(dataList)
