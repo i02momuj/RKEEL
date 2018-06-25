@@ -1,13 +1,13 @@
 Package: RKEELdata
 Type: Package
-Title: Datasets from KEEL for it Use in RKEEL
-Version: 1.0.4
-Date: 2017-01-27
+Title: Datasets from 'KEEL' for it Use in 'RKEEL'
+Version: 1.0.5
+Date: 2018-05-14
 Authors@R: c(
 	person("Jose M.", "Moyano", email = "jmoyano@uco.es", role = c("aut", "cre")),
 	person("Luciano", "Sanchez Ramos", email = "luciano@uniovi.es", role = "aut")
 	)
 Author: Jose M. Moyano [aut, cre], Luciano Sanchez Ramos [aut]
 Maintainer: Jose M. Moyano <jmoyano@uco.es>
-Description: KEEL is a popular Java software for a large number of different knowledge data discovery tasks. Furthermore, RKEEL is a package with a R code layer between R and KEEL, for using KEEL in R code. This package includes the datasets from KEEL in .dat format for its use in RKEEL package. For more information about KEEL, see <http://www.keel.es/>.
+Description: 'KEEL' is a popular Java software for a large number of different knowledge data discovery tasks. Furthermore, 'RKEEL' is a package with a R code layer between R and 'KEEL', for using 'KEEL' in R code. This package includes the datasets from 'KEEL' in .dat format for its use in 'RKEEL' package. For more information about 'KEEL', see <http://www.keel.es/>.
 License: GPL
