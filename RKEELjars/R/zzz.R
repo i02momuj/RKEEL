@@ -1,4 +1,7 @@
-.onLoad <- function(libname = find.package("RKEELjars"), pkgname = "RKEELjars") {
+require(downloader)
+require(utils)
+
+.onAttach <- function(libname = find.package("RKEELjars"), pkgname = "RKEELjars") {
 
   #List of jar files to download
   downloadList <- c()
@@ -20,6 +23,9 @@
     }
   }
 
+  #packageStartupMessage("Forbidden the following jars: ")
+  #packageStartupMessage(downloadList)
+
   #If any jar file is missing, download them
   if(length(downloadList) > 0){
 
@@ -27,29 +33,29 @@
     
     #packageStartupMessage("Download RKEEL jars")
 
-    #Try to download from dropbox
-    downloader::download(url = "https://www.dropbox.com/s/r3boeaflbmzljam/RKEELjars.zip?dl=1", destfile = downloadedFile, mode = "wb")
+    #Try to download from uco
+    downloader::download(url = "http://www.uco.es/users/jmoyano/RKEELjars.zip", destfile = downloadedFile, mode = "wb")
 
     #If download failed, download from other mirror
     if(file.info(downloadedFile)$size < 1000000){
       unlink(downloadedFile)
 
-      #Try to download from http://www.uco.es/~i02momuj
-      downloader::download(url = "http://www.uco.es/~i02momuj/RKEELjars.zip", destfile = downloadedFile, mode = "wb")
+      #Try to download from dropbox
+      downloader::download(url = "https://www.dropbox.com/s/r3boeaflbmzljam/RKEELjars.zip?dl=1", destfile = downloadedFile, mode = "wb")
 
       if(file.info(downloadedFile)$size < 1000000){
         unlink(downloadedFile)
         warning("Jar files could not be downloaded.")
       }
       else{
-        unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"))
+        utils::unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"))
         unlink(downloadedFile)
       }
     }
     else{
-      unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"))
-      #unlink(downloadedFile)
+      utils::unzip(zipfile = downloadedFile, exdir = system.file("exe", package="RKEELjars"))
+      unlink(downloadedFile)
     }
-  }
+  } #If all jars are downloaded, not download again
 
 }
