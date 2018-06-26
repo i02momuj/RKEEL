@@ -209,7 +209,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
 
     writeCSV = function(fileName = "rules", sep = ","){
       tryCatch({
-        write(self$rules, file=paste0(fileName,".csv"), sep = ",", col.names=NA)
+        write(self$rules, file=paste0(fileName,".csv"), sep = ",")
       }, error = function(err) {
         #Error
         cat(paste0("Error! ",err))
