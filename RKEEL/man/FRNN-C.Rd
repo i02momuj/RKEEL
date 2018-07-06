@@ -17,17 +17,17 @@ FRNN_C(train, test)
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- RKEEL::loadKeelDataset("iris_train")
-data_test <- RKEEL::loadKeelDataset("iris_test")
+#data_train <- RKEEL::loadKeelDataset("iris_train")
+#data_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithm
-algorithm <- RKEEL::FRNN_C(data_train, data_test)
+#algorithm <- RKEEL::FRNN_C(data_train, data_test)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$testPredictions
+#algorithm$testPredictions
 }
 \keyword{classification}
 

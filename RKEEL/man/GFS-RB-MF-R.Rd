@@ -24,18 +24,18 @@ GFS_RB_MF_R(train, test, numLabels, popSize, generations,
 A data.frame with the actual and predicted values for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- RKEEL::loadKeelDataset("autoMPG6_train")
-data_test <- RKEEL::loadKeelDataset("autoMPG6_test")
+#data_train <- RKEEL::loadKeelDataset("autoMPG6_train")
+#data_test <- RKEEL::loadKeelDataset("autoMPG6_test")
 
 #Create algorithm
 #algorithm <- RKEEL::GFS_RB_MF_R(data_train, data_test)
-algorithm <- RKEEL::GFS_RB_MF_R(data_train, data_test, popSize = 5, generations = 10)
+#algorithm <- RKEEL::GFS_RB_MF_R(data_train, data_test, popSize = 5, generations = 10)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$testPredictions
+#algorithm$testPredictions
 }
 \keyword{regression}
 

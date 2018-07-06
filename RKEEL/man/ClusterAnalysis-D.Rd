@@ -17,11 +17,11 @@ ClusterAnalysis_D(train, test)
 A data.frame with the preprocessed data for both \code{train} and \code{test} datasets.
 }
 \examples{
-data_train <- RKEEL::loadKeelDataset("car_train")
-data_test <- RKEEL::loadKeelDataset("car_test")
+#data_train <- RKEEL::loadKeelDataset("car_train")
+#data_test <- RKEEL::loadKeelDataset("car_test")
 
 #Create algorithm
-algorithm <- RKEEL::ClusterAnalysis_D(data_train, data_test)
+#algorithm <- RKEEL::ClusterAnalysis_D(data_train, data_test)
 
 #Run algorithm
 #algorithm$run()
