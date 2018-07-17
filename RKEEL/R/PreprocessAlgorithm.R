@@ -73,6 +73,9 @@ PreprocessAlgorithm <- R6::R6Class("PreprocessAlgorithm",
         #Copy algorithm exe
         file.copy(system.file("exe", private$jarName, package = "RKEELjars"), paste0(private$mainPath, "/exe/", private$jarName))
 
+        #Copy RunKeel exe
+        file.copy(system.file("exe", "RunKeel.jar", package = "RKEELjars"), paste0(private$mainPath, "/scripts/", "RunKeel.jar"))
+
         #Create results dir
         #dir.create(paste0(private$mainPath, "/results/", private$algorithmName, ".", private$dataName))
 

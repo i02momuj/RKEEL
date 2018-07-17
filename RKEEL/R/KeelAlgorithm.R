@@ -1,5 +1,7 @@
 #Class that defines a KEEL Algorithm
   #Implements the common functions of a KEEL algorithm
+require(RKEELjars)
+
 
 KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
 
@@ -12,14 +14,20 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
 
     #Initialize
     initialize = function(){
-      
+
       rJava::.jinit()
       jv <- rJava::.jcall("java/lang/System", "S", "getProperty", "java.runtime.version")
       if(substr(jv, 1L, 1L) == "1") {
-        jvn <- as.numeric(paste0(strsplit(jv, "[.]")[[1L]][1:2], collapse = "."))
-        if(jvn < 1.8) stop("Java 8 is needed for this package but not available")
+        jvn <- as.numeric(paste0(strsplit(jv, "[+.]")[[1L]][1:2], collapse = "."))
+        #Check java version under 8
+        if(jvn < 1.8 || is.na(jvn)){
+          #If it fails here, it could be java version 10, so we check it
+          if(substr(paste0(strsplit(jv, "[.+]")[[1L]][1:2], collapse = "."), 1, 2) != "10"){
+            stop("Java 8 is needed for this package but not available")
+          }
+        } 
       }
-      
+
       rJava::.jinit()
       javaPath <- paste0(rJava::.jcall('java/lang/System', 'S', 'getProperty', 'java.home'), "\\bin\\")
 
@@ -36,8 +44,6 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
       }
 
       #Test paths
-      #cat(paste0("HOLA:", system.file("exe", "RunKeel.jar", package = "RKEELjars")))
-
       if(! file.exists(system.file("exe", "RunKeel.jar", package = "RKEELjars"))){
         stop("RunKeel.jar doesn't exist under the defined path. Installation error.")
       }

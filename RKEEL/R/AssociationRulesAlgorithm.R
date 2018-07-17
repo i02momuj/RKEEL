@@ -68,7 +68,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
         #Create dataset folder
         dir.create(paste0(private$mainPath, "/datasets/", private$dataName))
         #Write dataset files
-        #########################cat(paste0(private$datDataset, "----------", private$mainPath, "/datasets/", private$dataName, "/", private$datFilename))
+        #cat(paste0(private$datDataset, "----------", private$mainPath, "/datasets/", private$dataName, "/", private$datFilename))
         private$writeDatFromDataframeAR(private$datDataset, paste0(private$mainPath, "/datasets/", private$dataName, "/", private$datFilename))
 
         #Copy data files
@@ -111,7 +111,6 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
 
         #Change work directory to execute .jar
         wdPath <- getwd()
-        cat(paste0(private$javaPath, "java -jar RunKeel.jar"))
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {
           system(paste0(private$javaPath, "java -jar RunKeel.jar"), show.output.on.console = FALSE)
@@ -209,7 +208,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
 
     writeCSV = function(fileName = "rules", sep = ","){
       tryCatch({
-        write(self$rules, file=paste0(fileName,".csv"), sep = ",")
+        arules::write(self$rules, file=paste0(fileName,".csv"), sep = ",")
       }, error = function(err) {
         #Error
         cat(paste0("Error! ",err))
