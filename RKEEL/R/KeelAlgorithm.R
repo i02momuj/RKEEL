@@ -1,6 +1,7 @@
 #Class that defines a KEEL Algorithm
   #Implements the common functions of a KEEL algorithm
 require(RKEELjars)
+require(rJava)
 
 
 KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
@@ -16,16 +17,10 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
     initialize = function(){
 
       rJava::.jinit()
-      jv <- rJava::.jcall("java/lang/System", "S", "getProperty", "java.runtime.version")
-      if(substr(jv, 1L, 1L) == "1") {
-        jvn <- as.numeric(paste0(strsplit(jv, "[+.]")[[1L]][1:2], collapse = "."))
-        #Check java version under 8
-        if(jvn < 1.8 || is.na(jvn)){
-          #If it fails here, it could be java version 10, so we check it
-          if(substr(paste0(strsplit(jv, "[.+]")[[1L]][1:2], collapse = "."), 1, 2) != "10"){
-            stop("Java 8 is needed for this package but not available")
-          }
-        } 
+      jv <-  rJava::.jcall("java/lang/System", "S", "getProperty", "java.runtime.version")
+      if(substr(jv, 1L, 2L) == "1.") {
+        jvn <- as.numeric(paste0(strsplit(jv, "[.]")[[1L]][1:2], collapse = "."))
+        if(jvn < 1.8) stop("Java >= 8 is needed for this package but not available")
       }
 
       rJava::.jinit()

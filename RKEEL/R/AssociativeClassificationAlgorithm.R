@@ -1,6 +1,10 @@
 #Class implementing a Classification Algorithm
 #Implements specific functions of an Associative classification algorithm
 
+require(Matrix)
+require(pmml)
+require(arules)
+
 AssociativeClassificationAlgorithm <- R6::R6Class("AssociativeClassificationAlgorithm",
 
   inherit = ClassificationAlgorithm,
@@ -14,9 +18,6 @@ AssociativeClassificationAlgorithm <- R6::R6Class("AssociativeClassificationAlgo
       super$setParameters(train, test)
     },
 
-    run = function(){
-      super$run()
-    },
 
     #Read algorithm output files
     readOutputs = function(trafile, tstfile, txtfile){
