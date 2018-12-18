@@ -39,7 +39,7 @@ RegressionAlgorithm <- R6::R6Class("RegressionAlgorithm",
       private$dataName <- "data"
     },
 
-    run = function(folderPath, expUniqueName){
+    run = function(folderPath, expUniqueName, javaOptions){
 
       #Use tryCatch() to remove experiment folders even it there are errors
       tryCatch({
@@ -96,12 +96,18 @@ RegressionAlgorithm <- R6::R6Class("RegressionAlgorithm",
 
         #Change work directory to execute .jar
         wdPath <- getwd()
+
+        #Manage options to java command line
+        if(missing(javaOptions)){
+          javaOptions <- ""
+        }
+
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {
-          system(paste0(private$javaPath, "java -jar RunKeel.jar"), show.output.on.console = FALSE)
+          system(paste0(private$javaPath, "java ", javaOptions, " -jar RunKeel.jar"), show.output.on.console = FALSE)
         }
         else {
-          system(paste0(private$javaPath, "java -jar RunKeel.jar"), ignore.stdout = TRUE)
+          system(paste0(private$javaPath, "java ", javaOptions, " -jar RunKeel.jar"), ignore.stdout = TRUE)
         }
         setwd(wdPath)
 
