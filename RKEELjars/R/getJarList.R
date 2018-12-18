@@ -4,7 +4,7 @@ getJarList <- function(){
   jarList <- list(
     #Main jar
     "RunKeel.jar",
-    
+
     #Classification
     "Ensembles-I.jar", #AdaBoost.NC-C
     "ART.jar",
@@ -17,6 +17,9 @@ getJarList <- function(){
     "CamNN.jar",
     "Clas-CART.jar",
     "CenterNN.jar",
+    "Clas-CBA.jar",
+    "Clas-CMAR.jar",
+    "Clas-CPAR.jar",
     "Clas-Fuzzy-CFAR.jar",
     "CFKNN.jar",
     "IS-CHC.jar",
@@ -120,7 +123,7 @@ getJarList <- function(){
     "Disc-UniformFrequency.jar",
     "Disc-UniformWidth.jar",
     "Trns-ZScore.jar",
-	
+
 	#Association rules
 	"Alatasetal.jar",
 	"Alcalaetal.jar",
