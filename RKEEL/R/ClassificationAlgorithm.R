@@ -34,9 +34,10 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
       private$testDataset <- test
 
       #Test jar file
-      #if(! file.exists(paste0(private$exePath, private$jarName))){
-      if(! file.exists(system.file("exe", private$jarName, package = "RKEELjars"))){
-        stop(paste0(private$jarName, " doesn't exist under the defined path. Installation error."))
+      if(! file.exists(paste0(private$exePath, private$jarName))){
+      #if(! file.exists(system.file("exe", private$jarName, package = "RKEELjars"))){
+        #cat(paste0(private$exePath, private$jarName), sep="\n")
+        stop(paste0(private$jarName, " doesn't exist under the defined path. Installation error;", private$exePath, private$jarName))
       }
 
       private$dataName <- "data"
