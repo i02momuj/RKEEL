@@ -1,8 +1,8 @@
 #Class implementing an Associative Classification Algorithm
   #Implements the CBA-C of KEEL
 
-CBA_C <- function(train, test, min_confidence=0.5, min_support=0.01,
-                   databaseCoverage=4){
+CBA_C <- function(train, test, min_support=0.01, min_confidence=0.5,
+                  pruning=TRUE, maxCandidates=80000){
   alg <- RKEEL::R6_CBA_C$new()
   alg$setParameters(train, test, min_support, min_confidence, pruning,
                     maxCandidates)
