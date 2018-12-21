@@ -51,8 +51,45 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
     },
 
     #Execute algorithm
-    run = function(){
-      #Implement in each algorithm type class
+    run = function(folderPath, expUniqueName, javaOptions){
+      #Manage expPath
+      expPath <- ""
+      if(missing(folderPath)){
+        expPath <- gsub("\\\\", "/", tempdir())
+      }
+      else{
+        expPath <- folderPath
+      }
+
+      if(substr(expPath, nchar(expPath), nchar(expPath)) != "/"){
+        expPath <- paste0(expPath, "/")
+      }
+
+      #Manage expUniqueName
+      if(missing(expUniqueName)){
+        private$mainPath <- paste0(expPath, "experiment_", gsub(" ", "_", gsub(":", "-", toString(Sys.time()))), sample(1:10000, 1))
+      }
+      else{
+        private$mainPath <- paste0(expPath, expUniqueName)
+      }
+
+      if(dir.exists(private$mainPath)){
+        stop(paste0("The current experiment folder ",  private$mainPath, " already exists. Please select an unique experiment folder name.", sep="\n"))
+      }
+
+      private$generateExperimentDir(private$mainPath)
+
+      #Manage options to java command line
+      if(missing(javaOptions)){
+        private$javaOpt <- ""
+      }
+      else{
+        private$javaOpt <- javaOptions
+      }
+
+      #Continue implementing in each algorithm type class
+
+
     },
 
     #Print object
@@ -76,8 +113,14 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
     #dataset path
     dataPath = RKEELdata::getDataPath(),
 
+    #path for experiments
+    mainPath = NULL,
+
     #java bin path
     javaPath = "",
+
+    #java command line options
+    javaOpt = "",
 
     #Private Functions
 

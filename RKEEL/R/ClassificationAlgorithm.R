@@ -45,34 +45,10 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
 
     run = function(folderPath, expUniqueName, javaOptions){
 
-      #Use tryCatch() to remove experiment folders even it there are errors
+      super$run(folderPath, expUniqueName, javaOptions)
+
+      #Use tryCatch() to remove experiment folders even if there are errors
       tryCatch({
-        #Experiment folder
-        #expPath <- gsub("//", "/", system.file("exp", "", package="RKEEL"))
-
-        if(missing(folderPath)){
-          expPath <- gsub("\\\\", "/", tempdir())
-        }
-        else{
-          expPath <- folderPath
-        }
-
-        if(substr(expPath, nchar(expPath), nchar(expPath)) != "/"){
-          expPath <- paste0(expPath, "/")
-        }
-
-        if(missing(expUniqueName)){
-          private$mainPath <- paste0(expPath, "experiment_", gsub(" ", "_", gsub(":", "-", toString(Sys.time()))), sample(1:10000, 1))
-        }
-        else{
-          private$mainPath <- paste0(expPath, expUniqueName)
-        }
-
-        if(dir.exists(private$mainPath)){
-          stop(paste0("The current experiment folder ",  private$mainPath, " already exists. Please select an unique experiment folder name.", sep="\n"))
-        }
-
-        private$generateExperimentDir(private$mainPath)
 
         #Copy dataset folder
         #Create dataset folder
@@ -101,17 +77,12 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
         #Change work directory to execute .jar
         wdPath <- getwd()
 
-        #Manage options to java command line
-        if(missing(javaOptions)){
-          javaOptions <- ""
-        }
-
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {
-          system(paste0(private$javaPath, "java ", javaOptions, " -jar RunKeel.jar"), show.output.on.console = FALSE)
+          system(paste0(private$javaPath, "java ", private$javaOpt, " -jar RunKeel.jar"), show.output.on.console = FALSE)
         }
         else {
-          system(paste0(private$javaPath, "java ", javaOptions, " -jar RunKeel.jar"), ignore.stdout = TRUE)
+          system(paste0(private$javaPath, "java ", private$javaOpt, " -jar RunKeel.jar"), ignore.stdout = TRUE)
         }
         setwd(wdPath)
 
@@ -175,9 +146,6 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
 
     #dataset name
     dataName = NULL,
-
-    #experiment main path
-    mainPath = NULL,
 
     #Create XML function
     writeKeelXML = function(){
