@@ -24,10 +24,7 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
 
       #Create dataset (.dat) files
       private$trainFilename <- "train.dat"
-      #writeDatFromDataframe(train, paste0(private$dataPath, "train.dat"))
       private$testFilename <- "test.dat"
-      #writeDatFromDataframe(test, paste0(private$dataPath, "test.dat"))
-      #writeDatFromDataframes(train, test, paste0(private$dataPath, private$trainFilename), paste0(private$dataPath, private$testFilename))
 
       #Assign datasets
       private$trainDataset <- train
@@ -35,8 +32,6 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
 
       #Test jar file
       if(! file.exists(paste0(private$exePath, private$jarName))){
-      #if(! file.exists(system.file("exe", private$jarName, package = "RKEELjars"))){
-        #cat(paste0(private$exePath, private$jarName), sep="\n")
         stop(paste0(private$jarName, " doesn't exist under the defined path. Installation error;", private$exePath, private$jarName))
       }
 
@@ -50,15 +45,10 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
       #Use tryCatch() to remove experiment folders even if there are errors
       tryCatch({
 
-        #Copy dataset folder
         #Create dataset folder
         dir.create(paste0(private$mainPath, "/datasets/", private$dataName))
         #Write dataset files
         writeDatFromDataframes(private$trainDataset, private$testDataset, paste0(private$mainPath, "/datasets/", private$dataName, "/", private$trainFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
-
-        #Copy data files
-        #file.copy(paste0(private$dataPath, private$trainFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$trainFilename))
-        #file.copy(paste0(private$dataPath, private$testFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
 
         #Copy algorithm exe
         file.copy(system.file("exe", private$jarName, package = "RKEELjars"), paste0(private$mainPath, "/exe/", private$jarName))
@@ -171,7 +161,6 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
       #Ficheros de entrada
       inputDataString = paste0("\"../datasets/", private$dataName, "/", private$trainFilename, "\" \"../datasets/", private$dataName, "/", private$trainFilename, "\" \"../datasets/", private$dataName, "/", private$testFilename, "\"")
       #Ficheros de salida
-      #dataName <- strsplit(trainData, "/")[[1]][1]
       outputDataString = paste0("\"../results/", private$algorithmName, ".",private$dataName, "/result0", ".tra\" \"../results/", private$algorithmName, ".", private$dataName, "/result0", ".tst\" \"../results/", private$algorithmName, ".", private$dataName, "/result0", "e0.txt\"")
 
       text <- ""
@@ -258,7 +247,6 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
       dataframe <- data.frame(m, stringsAsFactors = FALSE)
       return(dataframe)
     }
-
 
   )
 )
