@@ -44,31 +44,10 @@ ImbalancedClassificationAlgorithm <- R6::R6Class("ImbalancedClassificationAlgori
 
     run = function(){
 
-      cat("running\n")
+      super$run(folderPath, expUniqueName, javaOptions)
 
       #Use tryCatch() to remove experiment folders even it there are errors
       tryCatch({
-        #Experiment folder
-        #expPath <- gsub("//", "/", system.file("exp", "", package="RKEEL"))
-
-        expPath <- gsub("\\\\", "/", tempdir())
-
-        cat(expPath)
-        cat("\n")
-
-        if(substr(expPath, nchar(expPath), nchar(expPath)) != "/"){
-          expPath <- paste0(expPath, "/")
-          cat(expPath)
-          cat("\n")
-        }
-
-        private$mainPath <- paste0(expPath, "experiment_", gsub(" ", "_", gsub(":", "-", toString(Sys.time()))), sample(1:10000, 1))
-        private$generateExperimentDir(private$mainPath)
-
-        cat(private$mainPath)
-        cat("\n")
-
-        #Copy dataset folder
         #Create dataset folder
         dir.create(paste0(private$mainPath, "/datasets/", private$dataName))
         cat("Directory created \n")
@@ -78,10 +57,6 @@ ImbalancedClassificationAlgorithm <- R6::R6Class("ImbalancedClassificationAlgori
         #Write dataset files
         writeDatFromDataframes(private$trainDataset, private$testDataset, paste0(private$mainPath, "/datasets/", private$dataName, "/", private$trainFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
         cat("Writed datasets")
-
-        #Copy data files
-        #file.copy(paste0(private$dataPath, private$trainFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$trainFilename))
-        #file.copy(paste0(private$dataPath, private$testFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
 
         #Copy algorithm exe
         file.copy(system.file("exe", private$jarName, package = "RKEELjars"), paste0(private$mainPath, "/exe/", private$jarName))
@@ -100,13 +75,12 @@ ImbalancedClassificationAlgorithm <- R6::R6Class("ImbalancedClassificationAlgori
         cat(private$mainPath)
 
         #Change work directory to execute .jar
-        wdPath <- getwd()
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {
-          system(paste0(private$javaPath, "java -jar RunKeel.jar"), show.output.on.console = FALSE)
+          system(paste0(private$javaPath, "java ", private$javaOpt, " -jar RunKeel.jar"), show.output.on.console = FALSE)
         }
         else {
-          system(paste0(private$javaPath, "java -jar RunKeel.jar"), ignore.stdout = TRUE)
+          system(paste0(private$javaPath, "java ", private$javaOpt, " -jar RunKeel.jar"), ignore.stdout = TRUE)
         }
         setwd(wdPath)
 
