@@ -20,7 +20,7 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
     #Initialize function
     setParameters = function(train, test){
 
-      #super$initialize()
+      super$initialize()
 
       #Create dataset (.dat) files
       private$trainFilename <- "train.dat"

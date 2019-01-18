@@ -1,17 +1,19 @@
 Package: RKEEL
 Type: Package
 Title: Using KEEL in R Code
-Version: 1.2.6
+Version: 1.2.7
 Depends: R (>= 3.4.0)
-Date: 2018-12-21
+Date: 2019-01-18
 Authors@R: c(
 	person("Jose M.", "Moyano", email = "jmoyano@uco.es", role = c("aut", "cre")),
-	person("Luciano", "Sanchez Ramos", email = "luciano@uniovi.es", role = "aut"),
-  person("Oliver", "Sanchez Marin", email = "oliversanchez718@gmail.com", role = "ctb")
+	person("Luciano", "Sanchez", email = "luciano@uniovi.es", role = "aut"),
+	person("Oliver", "Sanchez", email = "oliversanchez718@gmail.com", role = "ctb"),
+	person("Jesus", "Alcala-Fernandez", email = "jalcala@decsai.ugr.es", role = "ctb")
 	)
 Author: Jose M. Moyano [aut, cre],
-  Luciano Sanchez Ramos [aut],
-  Oliver Sanchez Marin [ctb]
+  Luciano Sanchez [aut],
+  Oliver Sanchez [ctb],
+  Jesus Alcala-Fernandez [ctb]
 Maintainer: Jose M. Moyano <jmoyano@uco.es>
 Description: 'KEEL' is a popular Java software for a large number of different knowledge data discovery tasks.
     This package takes the advantages of 'KEEL' and R, allowing to use 'KEEL' algorithms in simple R code.
