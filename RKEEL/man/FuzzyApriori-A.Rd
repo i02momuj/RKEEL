@@ -4,10 +4,10 @@
 \alias{R6_FuzzyApriori_A}
 \title{FuzzyApriori_A KEEL Association Rules Algorithm}
 \description{
-FuzzyApriori_A Association Rules Algorithm from KEEL. 
+FuzzyApriori_A Association Rules Algorithm from KEEL.
 }
 \usage{
-FuzzyApriori_A(dat, NumberofPartitionsforNumericAttributes, 
+FuzzyApriori_A(dat, NumberofPartitionsforNumericAttributes,
   UseMaxOperatorfor1FrequentItemsets, MinimumSupport, MinimumConfidence)
 }
 \arguments{
@@ -79,24 +79,24 @@ A arules class with the  Association Rules for both \code{dat} dataset.
 "yuleQ", Yule's Q (Tan and Kumar, 2000) \cr \cr
 "yuleY", Yule's Y (Tan and Kumar, 2000) \cr \cr
 For more information see ?arules::interestMeasure  \cr \cr
- 
+
 }
 \examples{
 
 #Load KEEL dataset iris
-#dat<-loadKeelDataset("iris")
+dat<-loadKeelDataset("iris")
 
 #Create algorithm
-#algorithm <- FuzzyApriori_A(dat)
+algorithm <- FuzzyApriori_A(dat)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #Rules in format arules
-#algorithm$rules
+algorithm$rules
 
 #Show a number of rules
-#algorithm$showRules(2)
+algorithm$showRules(2)
 
 #Return a data.frame with all interest measures of set rules
 #algorithm$getInterestMeasures()

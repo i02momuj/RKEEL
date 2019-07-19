@@ -26,7 +26,8 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
       rJava::.jinit()
       javaPath <- paste0(rJava::.jcall('java/lang/System', 'S', 'getProperty', 'java.home'), "\\bin\\")
 
-      jarPath <- RKEELjars::getJarPath()
+      private$jarPath <- RKEELjars::getJarPath()
+      private$exePath <- RKEELjars::getExePath()
 
       if(substr(private$jarPath, nchar(private$jarPath), nchar(private$jarPath)) != "/"){
         private$jarPath <- paste0(private$jarPath, "/")
