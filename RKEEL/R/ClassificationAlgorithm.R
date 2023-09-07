@@ -51,7 +51,7 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
         writeDatFromDataframes(private$trainDataset, private$testDataset, paste0(private$mainPath, "/datasets/", private$dataName, "/", private$trainFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
 
         #Copy algorithm exe
-        file.copy(system.file("exe", private$jarName, package = "RKEELjars"), paste0(private$mainPath, "/exe/", private$jarName))
+        file.copy(system.file("exe", private$jarName, package = "RKEEL"), paste0(private$mainPath, "/exe/", private$jarName))
 
         #Create results dir
         dir.create(paste0(private$mainPath, "/results/", private$algorithmName, ".", private$dataName))

@@ -46,7 +46,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
 
       #Test jar file
       #if(! file.exists(paste0(private$exePath, private$jarName))){
-      if(! file.exists(system.file("exe", private$jarName, package = "RKEELjars"))){
+      if(! file.exists(system.file("exe", private$jarName, package = "RKEEL"))){
         stop(paste0(private$jarName, " doesn't exist under the defined path. Installation error."))
       }
 
@@ -70,13 +70,13 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
         #file.copy(paste0(private$dataPath, private$testFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
 
         #Copy algorithm exe
-        file.copy(system.file("exe", private$jarName, package = "RKEELjars"), paste0(private$mainPath, "/exe/", private$jarName))
+        file.copy(system.file("exe", private$jarName, package = "RKEEL"), paste0(private$mainPath, "/exe/", private$jarName))
 
         #Coy KEELToPMML algorithm to exe dir
-        file.copy(system.file("exe", "KeelToPMML.jar", package = "RKEELjars"), paste0(private$mainPath, "/exe/", "KeelToPMML.jar"))
+        file.copy(system.file("exe", "KeelToPMML.jar", package = "RKEEL"), paste0(private$mainPath, "/exe/", "KeelToPMML.jar"))
 
          #Coy KeelLateXTables algorithm to exe dir
-        file.copy(system.file("exe", "KeelLateXTables.jar", package = "RKEELjars"), paste0(private$mainPath, "/exe/", "KeelLateXTables.jar"))
+        file.copy(system.file("exe", "KeelLateXTables.jar", package = "RKEEL"), paste0(private$mainPath, "/exe/", "KeelLateXTables.jar"))
 
         #Create results dir
         dir.create(paste0(private$mainPath, "/results/", private$algorithmName, ".", private$dataName))

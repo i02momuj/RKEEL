@@ -24,10 +24,10 @@ data_test <- RKEEL::loadKeelDataset("car_test")
 algorithm <- RKEEL::Nominal2Binary_TR(data_train, data_test)
 
 #Run algorithm
-algorithm$run()
+#algorithm$run()
 
 #See results
-algorithm$preprocessed_test
+#algorithm$preprocessed_test
 }
 \keyword{preprocess}
 

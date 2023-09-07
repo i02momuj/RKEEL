@@ -1,6 +1,5 @@
 #Class that defines a KEEL Algorithm
   #Implements the common functions of a KEEL algorithm
-require(RKEELjars)
 require(rJava)
 
 
@@ -26,8 +25,8 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
       rJava::.jinit()
       javaPath <- paste0(rJava::.jcall('java/lang/System', 'S', 'getProperty', 'java.home'), "\\bin\\")
 
-      private$jarPath <- RKEELjars::getJarPath()
-      private$exePath <- RKEELjars::getExePath()
+      private$jarPath <- system.file("exe", "", package="RKEEL")
+      private$exePath <- system.file("exe", "", package="RKEEL")
 
       if(substr(private$jarPath, nchar(private$jarPath), nchar(private$jarPath)) != "/"){
         private$jarPath <- paste0(private$jarPath, "/")
@@ -40,7 +39,7 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
       }
 
       #Test paths
-      if(! file.exists(system.file("exe", "RunKeel.jar", package = "RKEELjars"))){
+      if(! file.exists(system.file("exe", "RunKeel.jar", package = "RKEEL"))){
         stop("RunKeel.jar doesn't exist under the defined path. Installation error.")
       }
 
@@ -101,13 +100,13 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
     #Private properties
 
     #RunKeel.jar path
-    jarPath = RKEELjars::getJarPath(),
-
+    jarPath = system.file("exe", "", package="RKEEL"),
+    
     #exes path
-    exePath = RKEELjars::getExePath(),
-
+    exePath = system.file("exe", "", package="RKEEL"),
+    
     #dataset path
-    dataPath = RKEELdata::getDataPath(),
+    dataPath = getDataPath(),
 
     #path for experiments
     mainPath = NULL,
@@ -137,7 +136,7 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
       dir.create(paste0(mainPath, "/exe"))
       dir.create(paste0(mainPath, "/results"))
       dir.create(paste0(mainPath, "/scripts"))
-      file.copy(system.file("exe", "RunKeel.jar", package = "RKEELjars"), paste0(mainPath, "/scripts/RunKeel.jar"))
+      file.copy(system.file("exe", "RunKeel.jar", package = "RKEEL"), paste0(mainPath, "/scripts/RunKeel.jar"))
     }
 
   )

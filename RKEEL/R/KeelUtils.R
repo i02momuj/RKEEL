@@ -336,6 +336,12 @@ writeDatFromDataframe = function(data, fileName){
       attribute <- paste0(attribute, "}")
       attributesType <- c(attributesType, "character")
     }
+    #integer
+    else if(is.integer(data[, i]) || typeof(as.numeric(as.character(data[,i]))) == "integer"){
+      #add type, min and max values
+      attribute <- paste0(attribute, " integer [", min(na.omit(as.numeric(as.character(data[,i])))), ", ", max(na.omit(as.numeric(as.character(data[,i])))), "]")
+      attributesType <- c(attributesType, "integer")
+    }
     #real
     else if(typeof(as.numeric(as.character(data[,i]))) == "double"){
       #add type, min and max values
@@ -343,12 +349,6 @@ writeDatFromDataframe = function(data, fileName){
       maxValue <- format(max(na.omit(as.numeric(as.character(data[,i])))), nsmall = 1)
       attribute <- paste0(attribute, " real [", minValue, ", ", maxValue, "]")
       attributesType <- c(attributesType, "real")
-    }
-    #integer
-    else if(typeof(as.numeric(as.character(data[,i]))) == "integer"){
-      #add type, min and max values
-      attribute <- paste0(attribute, " integer [", min(na.omit(as.numeric(as.character(data[,i])))), ", ", max(na.omit(as.numeric(as.character(data[,i])))), "]")
-      attributesType <- c(attributesType, "integer")
     }
     #Categorical
     else if(!is.null(levels(data[,i]))){
@@ -535,6 +535,12 @@ getAttributeLinesFromDataframes = function(trainData, testData){
       attribute <- paste0(attribute, "}")
       attributesType <- c(attributesType, "character")
     }
+    #integer
+    else if(is.integer(data[, i]) || typeof(as.numeric(as.character(data[,i]))) == "integer"){
+      #add type, min and max values
+      attribute <- paste0(attribute, " integer [", min(na.omit(as.numeric(as.character(data[,i])))), ", ", max(na.omit(as.numeric(as.character(data[,i])))), "]")
+      attributesType <- c(attributesType, "integer")
+    }
     #real
     else if(typeof(as.numeric(as.character(data[,i]))) == "double"){
       #add type, min and max values
@@ -542,12 +548,6 @@ getAttributeLinesFromDataframes = function(trainData, testData){
       maxValue <- format(max(na.omit(as.numeric(as.character(data[,i])))), nsmall = 1)
       attribute <- paste0(attribute, " real [", minValue, ", ", maxValue, "]")
       attributesType <- c(attributesType, "real")
-    }
-    #integer
-    else if(typeof(as.numeric(as.character(data[,i]))) == "integer"){
-      #add type, min and max values
-      attribute <- paste0(attribute, " integer [", min(na.omit(as.numeric(as.character(data[,i])))), ", ", max(na.omit(as.numeric(as.character(data[,i])))), "]")
-      attributesType <- c(attributesType, "integer")
     }
     #Categorical
     else if(!is.null(levels(data[,i]))){
