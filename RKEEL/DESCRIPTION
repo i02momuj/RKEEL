@@ -24,4 +24,3 @@ SystemRequirements: Java (>= 8)
 License: GPL
 Imports: R6, XML, doParallel, foreach, gdata, RKEELdata (>= 1.0.5), pmml, 
         arules, Matrix, rJava, openssl, downloader
-StagedInstall: no

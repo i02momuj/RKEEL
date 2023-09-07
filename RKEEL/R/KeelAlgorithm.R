@@ -100,10 +100,10 @@ KeelAlgorithm <- R6::R6Class("KeelAlgorithm",
     #Private properties
 
     #RunKeel.jar path
-    jarPath = system.file("exe", "", package="RKEEL"),
+    jarPath = "", # system.file("exe", "", package="RKEEL"),
     
     #exes path
-    exePath = system.file("exe", "", package="RKEEL"),
+    exePath = "", # system.file("exe", "", package="RKEEL"),
     
     #dataset path
     dataPath = getDataPath(),

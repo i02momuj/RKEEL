@@ -9,7 +9,7 @@ runParallel <- function(algorithmList, cores) {
     cores <- parallel::detectCores()
   }
 
-  if(class(algorithmList) != "list") {
+  if(!is.list(algorithmList)) {
     stop("Error. Argument must be a list with the algorithm objects.")
   }
 
@@ -36,7 +36,7 @@ runParallel <- function(algorithmList, cores) {
 #Arguments could be a list with the algorithms or various algorithms as various arguments
 runSequential <- function(algorithmList) {
 
-  if(class(algorithmList) != "list") {
+  if(!is.list(algorithmList)) {
     stop("Error. Argument must be a list with the algorithm objects.")
   }
   cores <- 1

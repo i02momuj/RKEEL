@@ -27,8 +27,8 @@ require(openssl)
   #If any jar file is missing, download them
   if(length(downloadList) > 0){
 
-    libPath = paste(.libPaths()[1], "/RKEEL", sep="")
-    downloadedJarFile <- file.path(libPath, "RKEELjars_1.1.zip") #  "/tmp/RKEELjars.zip" # system.file("exe", package="RKEEL")
+    # libPath = system.file("exe", package="RKEEL") # paste(.libPaths()[1], "/RKEEL", sep="")
+    downloadedJarFile <- file.path(system.file("exe", package="RKEEL"), "RKEELjars_1.1.zip") #  "/tmp/RKEELjars.zip" # system.file("exe", package="RKEEL")
 
     #packageStartupMessage("Download RKEEL jars")
 
@@ -66,7 +66,7 @@ require(openssl)
       warning("Jar files could not be downloaded.")
     }
     else{
-      utils::unzip(zipfile = downloadedJarFile, exdir = paste(libPath, "/exe", sep="")) # "/tmp") #
+      utils::unzip(zipfile = downloadedJarFile, exdir = system.file("exe", package="RKEEL")) # "/tmp") #
       unlink(downloadedJarFile)
     }
   } #If all jars are downloaded, not download again
