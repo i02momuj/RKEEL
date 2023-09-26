@@ -18,17 +18,17 @@ ANR_F(train, test, seed)
 A data.frame with the preprocessed data for both \code{train} and \code{test} datasets.
 }
 \examples{
-#data_train <- RKEEL::loadKeelDataset("car_train")
-#data_test <- RKEEL::loadKeelDataset("car_test")
-
+data_train <- RKEEL::loadKeelDataset("zoo")
+data_test <- RKEEL::loadKeelDataset("zoo")
+  
 #Create algorithm
-#algorithm <- RKEEL::ANR_F(data_train, data_test)
-
+algorithm <- RKEEL::ANR_F(data_train, data_test)
+  
 #Run algorithm
-#algorithm$run()
-
+algorithm$run()
+  
 #See results
-#algorithm$preprocessed_test
+algorithm$preprocessed_test
 }
 \keyword{preprocess}
 

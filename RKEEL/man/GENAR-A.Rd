@@ -87,35 +87,31 @@ For more information see ?arules::interestMeasure  \cr \cr
  
 }
 \examples{
-
-#Load KEEL dataset iris
-#dat<-loadKeelDataset("iris")
+#Load KEEL dataset
+dat<-RKEEL::loadKeelDataset("glass")
 
 #Create algorithm
-#algorithm <- GENAR_A(dat)
+algorithm <- RKEEL::GENAR_A(dat)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #Rules in format arules
-#algorithm$rules
+algorithm$rules
 
 #Show a number of rules
-#algorithm$showRules(2)
+algorithm$showRules(2)
 
 #Return a data.frame with all interest measures of set rules
-#algorithm$getInterestMeasures()
+algorithm$getInterestMeasures()
 
 #Add interst measure YuleY to set rules
-#algorithm$addInterestMeasure("YuleY","yulesY")
+algorithm$addInterestMeasure("YuleY","yulesY")
 
 #Sort by interest measure lift
-#algorithm$sortBy("lift")
+algorithm$sortBy("lift")
 
 #Save rules in CSV file
-#algorithm$writeCSV("myrules")
-
-#Save rules in PMML file
-#algorithm$writePMML("myrules")
+\donttest{algorithm$writeCSV(paste0(tempdir(), "/myrules"))}
 }
 \keyword{association rules}

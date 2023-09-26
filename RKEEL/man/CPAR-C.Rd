@@ -21,16 +21,16 @@ CPAR_C(train, test, delta, min_gain, alpha, rules_prediction)
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-#data <- loadKeelDataset("breast")
+data <- loadKeelDataset("breast")
 
 #Create algorithm
-#algorithm <- RKEEL::CPAR_C(data, data)
+algorithm <- RKEEL::CPAR_C(data, data)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #See results
-#algorithm$testPredictions
+algorithm$testPredictions
 }
 \keyword{classification}
 

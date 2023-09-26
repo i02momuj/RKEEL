@@ -19,13 +19,13 @@ Returns a list with the mean results of the numFolds executions.
 }
 \examples{
 #Load datasets
-#iris <- RKEEL::loadKeelDataset("iris")
+iris <- RKEEL::loadKeelDataset("iris")
 
 #Create algorithm
-#learner_C45_C <- RKEEL::C45_C(iris, iris)
+learner_C45_C <- RKEEL::C45_C(iris, iris)
 
 #Perform 5-folds CV
-#results <- RKEEL::runCV(learner_C45_C, iris, 5)
+results <- RKEEL::runCV(learner_C45_C, iris, 5)
 }
 \keyword{utils}
 

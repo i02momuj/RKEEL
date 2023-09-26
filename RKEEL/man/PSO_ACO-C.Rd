@@ -28,17 +28,20 @@ PSO_ACO_C(train, test, max_uncovered_samples, min_saples_by_rule,
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-#data_train <- RKEEL::loadKeelDataset("iris_train")
-#data_test <- RKEEL::loadKeelDataset("iris_test")
+\donttest{
+data_train <- RKEEL::loadKeelDataset("iris_train")
+data_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithm
-#algorithm <- RKEEL::PSO_ACO_C(data_train, data_test)
+algorithm <- RKEEL::PSO_ACO_C(data_train, data_test, 
+  max_iterations_without_converge=2, numParticles=5)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #See results
-#algorithm$testPredictions
+algorithm$testPredictions
+}
 }
 \keyword{classification}
 

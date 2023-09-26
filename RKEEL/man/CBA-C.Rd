@@ -21,16 +21,16 @@ CBA_C(train, test, min_support, min_confidence, pruning, maxCandidates)
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-#data <- loadKeelDataset("breast")
+data <- loadKeelDataset("breast")
 
 #Create algorithm
-#algorithm <- RKEEL::CBA_C(data, data)
+algorithm <- RKEEL::CBA_C(data, data)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #See results
-#algorithm$testPredictions
+algorithm$testPredictions
 }
 \keyword{classification}
 

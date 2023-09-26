@@ -73,7 +73,12 @@ ImbalancedClassificationAlgorithm <- R6::R6Class("ImbalancedClassificationAlgori
         private$writeKeelConfig()
 
         cat(private$mainPath)
-
+        
+        #Change to old current working directory after finishing the function
+        # even if an error occurs
+        wdPath <- getwd()
+        on.exit(setwd(wdPath))
+        
         #Change work directory to execute .jar
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {

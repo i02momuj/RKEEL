@@ -66,6 +66,9 @@ ClassificationAlgorithm <- R6::R6Class("ClassificationAlgorithm",
 
         #Change work directory to execute .jar
         wdPath <- getwd()
+        #Change to old current working directory after finishing the function
+        # even if an error occurs
+        on.exit(setwd(wdPath))
 
         setwd(paste0(private$mainPath, "/scripts/"))
         if(grepl("windows", tolower(Sys.info()[1]))) {

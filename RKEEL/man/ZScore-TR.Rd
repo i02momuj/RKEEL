@@ -21,13 +21,13 @@ data_train <- RKEEL::loadKeelDataset("car_train")
 data_test <- RKEEL::loadKeelDataset("car_test")
 
 #Create algorithm
-#algorithm <- RKEEL::ZScore_TR(data_train, data_test)
+algorithm <- RKEEL::ZScore_TR(data_train, data_test)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #See results
-#algorithm$preprocessed_test
+algorithm$preprocessed_test
 }
 \keyword{preprocess}
 

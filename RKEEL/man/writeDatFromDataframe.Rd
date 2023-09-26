@@ -13,8 +13,8 @@ writeDatFromDataframe(data, fileName)
 \item{fileName}{String with the file name to store the dataset}
 }
 \examples{
-#data(iris)
-#writeDatFromDataframe(iris, "iris.dat")
+data(iris)
+writeDatFromDataframe(iris, paste0(tempdir(), "/iris.dat"))
 }
 \keyword{utils}
 

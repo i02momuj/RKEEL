@@ -70,6 +70,9 @@ RegressionAlgorithm <- R6::R6Class("RegressionAlgorithm",
 
         #Change work directory to execute .jar
         wdPath <- getwd()
+        #Change to old current working directory after finishing the function
+        # even if an error occurs
+        on.exit(setwd(wdPath))
 
         #Manage options to java command line
         if(missing(javaOptions)){

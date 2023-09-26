@@ -20,16 +20,16 @@ CMAR_C(train, test, min_confidence, min_support, databaseCoverage)
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-#data <- loadKeelDataset("breast")
+data <- loadKeelDataset("breast")
 
 #Create algorithm
-#algorithm <- RKEEL::CMAR_C(data, data)
+algorithm <- RKEEL::CMAR_C(data, data)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #See results
-#algorithm$testPredictions
+algorithm$testPredictions
 }
 \keyword{classification}
 

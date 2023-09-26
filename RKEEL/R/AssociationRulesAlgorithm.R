@@ -16,33 +16,17 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
     #Algorithm outputs
     output = NULL,
     rules = NULL,
-    #trainPredictions = NULL,
-    #testPredictions = NULL,
 
 
     #Public functions
 
     #Initialize function
-    #setParameters = function(train, test){
     setParameters = function(dat){
-
       #super$initialize()
-
-      #Create dataset (.dat) files
-      #private$trainFilename <- "train.dat"
-      #writeDatFromDataframe(train, paste0(private$dataPath, "train.dat"))
-      #private$testFilename <- "test.dat"
-      #writeDatFromDataframe(test, paste0(private$dataPath, "test.dat"))
-      #writeDatFromDataframes(train, test, paste0(private$dataPath, private$trainFilename), paste0(private$dataPath, private$testFilename))
 
       private$datFilename <- "dat.dat"
 
-      #Assign datasets
-      #private$trainDataset <- train
-      #private$testDataset <- test
-
       private$datDataset <- dat
-
 
       #Test jar file
       #if(! file.exists(paste0(private$exePath, private$jarName))){
@@ -62,12 +46,7 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
         #Create dataset folder
         dir.create(paste0(private$mainPath, "/datasets/", private$dataName))
         #Write dataset files
-        #cat(paste0(private$datDataset, "----------", private$mainPath, "/datasets/", private$dataName, "/", private$datFilename))
         private$writeDatFromDataframeAR(private$datDataset, paste0(private$mainPath, "/datasets/", private$dataName, "/", private$datFilename))
-
-        #Copy data files
-        #file.copy(paste0(private$dataPath, private$trainFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$trainFilename))
-        #file.copy(paste0(private$dataPath, private$testFilename), paste0(private$mainPath, "/datasets/", private$dataName, "/", private$testFilename))
 
         #Copy algorithm exe
         file.copy(system.file("exe", private$jarName, package = "RKEEL"), paste0(private$mainPath, "/exe/", private$jarName))
@@ -102,9 +81,12 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
         dir.create(paste0(private$mainPath, "/scripts/", "KeelLateXTables"))
         dir.create(paste0(private$mainPath, "/scripts/", "KeelLateXTables", "/TST", private$algorithmName))
         private$writeKeelConfig()
-
+        
         #Change work directory to execute .jar
         wdPath <- getwd()
+        #Change to old current working directory after finishing the function
+        # even if an error occurs
+        on.exit(setwd(wdPath))
 
         #Manage options to java command line
         if(missing(javaOptions)){
@@ -254,12 +236,6 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
     #data dataset
     datDataset = NULL,
 
-    #train dataset
-    #trainDataset = NULL,
-
-    #test dataset
-    #testDataset = NULL,
-
     #dataset name
     dataName = NULL,
 
@@ -303,18 +279,21 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
     #Create config files function
     writeKeelConfig = function(){
 
-
       #-----ALGORITHM-------
       #Ficheros de entrada
       inputDataString = paste0("\"../datasets/", private$dataName, "/", private$datFilename, "\"")
       #Ficheros de salida
-      #dataName <- strsplit(trainData, "/")[[1]][1]
       tmpOutput = ""
       for(i in 0:(private$algorithmOutputNumTxt-1)){
         tmpOutput = paste0(tmpOutput," \"../results/", private$algorithmName, ".", private$dataName, "/result0s0", "e",i,".txt\"")
       }
       outputDataString = paste0("\"../results/", private$algorithmName, ".",private$dataName, "/result0s0", ".tra\" \"../results/", private$algorithmName, ".", private$dataName, "/result0s0", ".tst\"", tmpOutput)
 
+      #Change options to the original after executing the function, even if it 
+      # fails
+      oldOptions <- options()
+      on.exit(options(oldOptions))
+            
       options(scipen = 999)
       text <- ""
       text <- paste0(text, "algorithm = ", private$algorithmString)
@@ -331,7 +310,6 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
       #Ficheros de entrada
       inputDataStringPMML = paste0("\"../datasets/", private$dataName, "/", private$datFilename, "\" \"../results/", private$algorithmName, ".", private$dataName, "/result0s0", ".tst\" \"../results/", private$algorithmName, ".",private$dataName, "/result0s0", ".tra\"")
       #Ficheros de salida
-      #dataName <- strsplit(trainData, "/")[[1]][1]
       outputDataStringPMML = paste0("\"../results/", "KEELToPMML/TST", private$algorithmName, "/result0s0file0.pmml")
 
       text <- ""
@@ -346,7 +324,6 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
       #Ficheros de entrada
       inputDataStringPMML = paste0("\"../datasets/", private$dataName, "/", private$datFilename, "\" \"../results/", private$algorithmName, ".", private$dataName, "/result0s0", ".tst\" \"../results/", private$algorithmName, ".",private$dataName, "/result0s0", ".tra\"")
       #Ficheros de salida
-      #dataName <- strsplit(trainData, "/")[[1]][1]
       outputDataStringPMML = paste0("\"../results/", "KeelLateXTables/TST", private$algorithmName, "/result0s0.stat")
 
       text <- ""
@@ -391,12 +368,8 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
         cat("Error! The number of rules generated is null or too low!")
         cat(pmmlfile, sep="\n")
         cat(latexfile, sep="\n")
-        #cat(readLines(pmmlfile,n = -1))
         private$resultLatex <- readLines(latexfile,n = -1)
       })
-
-
-
     },
 
 
@@ -516,7 +489,5 @@ AssociationRulesAlgorithm <- R6::R6Class("AssociationRulesAlgorithm",
       close(fileConn)
 
     }
-
-
   )
 )

@@ -43,17 +43,18 @@ GANN_C(train, test, hidden_layers, hidden_nodes, transfer, eta,
 A data.frame with the actual and predicted classes for both \code{train} and \code{test} datasets.
 }
 \examples{
-#data_train <- RKEEL::loadKeelDataset("iris_train")
-#data_test <- RKEEL::loadKeelDataset("iris_test")
+data_train <- RKEEL::loadKeelDataset("iris_train")
+data_test <- RKEEL::loadKeelDataset("iris_test")
 
 #Create algorithm
-#algorithm <- RKEEL::GANN_C(data_train, data_test)
+algorithm <- RKEEL::GANN_C(data_train, data_test, hidden_layers=1, 
+  hidden_nodes=5, max_generations=5)
 
 #Run algorithm
-#algorithm$run()
+algorithm$run()
 
 #See results
-#algorithm$testPredictions
+algorithm$testPredictions
 }
 \keyword{classification}
 
